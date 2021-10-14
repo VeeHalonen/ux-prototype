@@ -1,0 +1,16 @@
+/* NOTE: Colours in theme.js !! */
+.App {
+  /* text-align: center; */
+  margin: 30px;
+  margin-left: 75px;
+  margin-right: 75px;
+}
+#topDiv,
+#navDiv {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+#logo {
+  max-width: 500px;
+}
