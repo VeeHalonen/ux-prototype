@@ -10,12 +10,9 @@ const Home = () => {
       spacing={1}
       style={{ marginTop: 50 }}
     >
-      {/* <Grid item textAlign="start">
-        <Typography variant="h4">Home</Typography>
-      </Grid> */}
       <Grid item>
         <Link to="/clearance-items">
-          <img id="logo" src="bannerOffers.png" alt="Latest" />
+          <img id="logo" src="bannerOffers.png" alt="Offers" />
         </Link>
       </Grid>
       <Grid item>
@@ -25,7 +22,7 @@ const Home = () => {
       </Grid>
       <Grid item>
         <Link to="/categories">
-          <img id="logo" src="bannerCategories.png" alt="Latest" />
+          <img id="logo" src="bannerCategories.png" alt="Categories" />
         </Link>
       </Grid>
     </Grid>

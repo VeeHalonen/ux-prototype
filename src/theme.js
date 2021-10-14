@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { blueGrey, grey } from "@mui/material/colors";
+import { blueGrey, grey, purple } from "@mui/material/colors";
 
 // https://mui.com/customization/theming/
 
@@ -11,18 +11,38 @@ export const theme = createTheme({
   typography: {
     /* ALL: */
     // fontFamily: ["Times New Roman", "serif"].join(","), // <- fallback syntax
-    /* ...OR by component type: */
+    /* ...OR by tag type: */
     // h5: {
     //   fontFamily: "Arial",
     // },
     // button: {
     //   fontFamily: "Comic Sans MS",
     // },
+    /* Specific components */
+    link: {
+      color: "#00ff00",
+      "&:hover": {
+        color: "#000000",
+        textDecoration: "underline #000000",
+      },
+    },
+    components: {
+      // Name of the component (global class, from MUI documentation)
+      MuiLink: {
+        styleOverrides: {
+          color: purple[500],
+          root: {
+            color: purple[500],
+          },
+        },
+      },
+    },
   },
   /* COLOURS */
   palette: {
     background: {
-      default: "lightgray",
+      default: "lightgray", // Site background
+      // paper: "red", // Products cards etc.
     },
     primary: {
       // main: "#96cc00", // <- works too
@@ -36,5 +56,16 @@ export const theme = createTheme({
       main: grey[500],
       contrastText: "#fff", // e.g. button text
     },
+    /* Certain interactive parts */
+    // action: {
+    //   active: purple[200],
+    //   activeOpacity: 1,
+    //   hover: purple[100],
+    //   hoverOpacity: 0.7,
+    //   focus: purple[600],
+    //   focusOpacity: 1,
+    //   selected: purple[300],
+    //   selectedOpacity: 1,
+    // },
   },
 });
