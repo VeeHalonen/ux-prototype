@@ -7,7 +7,14 @@ const ProductThumbnail = (props) => {
   const width = 200;
   const padding = 10;
   return (
-    <div style={{ width, margin: 10, display: "inline-block" }}>
+    <div
+      style={{
+        width,
+        margin: 10,
+        display: "inline-block",
+        textAlign: "center",
+      }}
+    >
       <Card style={{ padding, paddingBottom: 20 }}>
         <Link to="/product">
           <img
