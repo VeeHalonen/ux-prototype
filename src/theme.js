@@ -6,22 +6,19 @@ import { blueGrey, grey } from "@mui/material/colors";
 // NOTE: always use <Typography> in the code for the fonts to work!
 
 export const theme = createTheme({
-  /* FONTS: */
+  /* FONTS (default: Roboto) */
   typography: {
     /* ALL: */
-    // fontFamily: ['"Montserrat"', "Open Sans"].join(","),
+    // fontFamily: ["Times New Roman", "serif"].join(","), // <- fallback syntax
     /* ...OR by component type: */
     // h5: {
-    //   fontFamily: "verdana",
-    // },
-    // p: {
-    //   fontFamily: "Times New Roman",
+    //   fontFamily: "Arial",
     // },
     // button: {
     //   fontFamily: "Comic Sans MS",
     // },
   },
-  /* COLOURS: */
+  /* COLOURS */
   palette: {
     background: {
       default: "lightgray",
