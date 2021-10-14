@@ -3,7 +3,7 @@ import { blueGrey, grey } from "@mui/material/colors";
 
 // https://mui.com/customization/theming/
 
-// Background colour in App.css !!
+// NOTE: always use <Typography> in the code for the fonts to work!
 
 export const theme = createTheme({
   typography: {

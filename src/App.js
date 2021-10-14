@@ -3,6 +3,8 @@ import { theme } from "./theme";
 import Home from "./views/Home";
 import About from "./views/About";
 import ShoppingCart from "./views/ShoppingCart";
+import ClearanceItems from "./views/ClearanceItems";
+import Categories from "./views/Categories";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ThemeProvider } from "@mui/system";
 import TopMenu from "./components/TopMenu";
@@ -41,7 +43,7 @@ function App() {
                   id="logo"
                   src="logo.png"
                   alt="Fans Only Home"
-                  ma-width="500px"
+                  max-width="500px"
                 />
               </Link>
             </div>
@@ -83,6 +85,12 @@ function App() {
               </Route>
               <Route path="/shopping-cart">
                 <ShoppingCart />
+              </Route>
+              <Route path="/clearance-items">
+                <ClearanceItems />
+              </Route>
+              <Route path="/categories">
+                <Categories />
               </Route>
               <Route path="/">
                 <Home />
