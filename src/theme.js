@@ -4,6 +4,7 @@ import { blueGrey, grey } from "@mui/material/colors";
 // https://mui.com/customization/theming/
 
 // NOTE: always use <Typography> in the code for the fonts to work!
+// e.g. <Typography variant="h5" paragraph>I'm a title!</Typography>
 
 export const theme = createTheme({
   /* FONTS (default: Roboto) */
