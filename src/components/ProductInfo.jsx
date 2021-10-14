@@ -14,7 +14,7 @@ const ProductInfo = () => {
           <Typography variant="h4">€100</Typography>
         </Grid>
       </Grid>
-      <Rating name="size-small" value={3} readOnly />
+      <Rating value={3} readOnly />
       <div style={{ marginLeft: 3 }}>
         <StyledLink
           name="Read Reviews"

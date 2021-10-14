@@ -15,6 +15,7 @@ import Search from "./views/Search";
 import ShoppingCartDiv from "./components/ShoppingCartDiv";
 import { useState } from "react";
 import ProductPage from "./views/ProductPage";
+import Reviews from "./views/Reviews";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -95,6 +96,9 @@ function App() {
               </Route>
               <Route path="/product">
                 <ProductPage />
+              </Route>
+              <Route path="/reviews">
+                <Reviews />
               </Route>
               <Route path="/">
                 <Home />

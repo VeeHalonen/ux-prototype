@@ -18,7 +18,7 @@ const ProductThumbnail = (props) => {
           />
         </Link>
         <StyledLink to="/product" name="Product Name" component="p" />
-        <Rating name="size-small" value={3} size="small" readOnly />
+        <Rating value={3} size="small" readOnly />
         <Typography variant="body2" textAlign="center">
           Some more information
         </Typography>
