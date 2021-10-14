@@ -1,4 +1,4 @@
-The styles can be found in `src/theme.js`.
+The styles can be found in `src/theme.js`. Images are in the `public` folder.
 
 # Getting Started with Create React App
 
