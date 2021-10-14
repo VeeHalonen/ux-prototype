@@ -12,17 +12,17 @@ const Home = () => {
     >
       <Grid item>
         <Link to="/clearance-items">
-          <img id="logo" src="bannerOffers.png" alt="Offers" />
+          <img src="bannerOffers.png" alt="Offers" />
         </Link>
       </Grid>
       <Grid item>
         <Link to="/search">
-          <img id="logo" src="bannerLatest.png" alt="Latest" />
+          <img src="bannerLatest.png" alt="Latest" />
         </Link>
       </Grid>
       <Grid item>
         <Link to="/categories">
-          <img id="logo" src="bannerCategories.png" alt="Categories" />
+          <img src="bannerCategories.png" alt="Categories" />
         </Link>
       </Grid>
     </Grid>
