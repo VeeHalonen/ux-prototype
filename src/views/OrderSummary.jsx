@@ -1,40 +1,22 @@
-import { Button, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Grid, Typography } from "@mui/material";
+import PrevNextButtons from "../components/PrevNextButtons";
+import SimpleDataRow from "../components/SimpleDataRow";
+import SimpleDataRowTitle from "../components/SimpleDataRowTitle";
+import TotalSum from "../components/TotalSum";
 
 const OrderSummary = () => {
-  const style = { fontWeight: "bold" };
   return (
     <div>
       <Typography variant="h5" paragraph>
         Order Summary
       </Typography>
       <Grid container spacing={3} style={{ marginTop: 10 }}>
-        <Grid container item justifyContent="space-between">
-          <Grid item>
-            <Typography style={style}>Product Name</Typography>
-          </Grid>
-          <Grid item>
-            <Typography style={style}>€50</Typography>
-          </Grid>
-        </Grid>
-        <Grid container item justifyContent="space-between">
-          <Grid item>
-            <Typography style={style}>Product Name</Typography>
-          </Grid>
-          <Grid item>
-            <Typography style={style}>€50</Typography>
-          </Grid>
-        </Grid>
+        <SimpleDataRowTitle />
+        <SimpleDataRow name="Product Name" price={50} quantity={1} />
+        <SimpleDataRow name="Product Name" price={50} quantity={1} />
       </Grid>
-      <hr style={{ marginTop: 25, marginBottom: 25 }} />
-      <Typography variant="h5" textAlign="end">
-        Total: €100
-      </Typography>
-      <div style={{ textAlign: "end", marginTop: 30, marginBottom: 100 }}>
-        <Button component={Link} to="/shipping-and-payment" variant="contained">
-          Next
-        </Button>
-      </div>
+      <TotalSum sum={100} />
+      <PrevNextButtons nextLink="/shipping-and-payment" />
     </div>
   );
 };
