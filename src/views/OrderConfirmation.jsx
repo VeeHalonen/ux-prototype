@@ -1,17 +1,17 @@
 import { Typography, Grid } from "@mui/material";
 import PrevNextButtons from "../components/PrevNextButtons";
+import ShoppingCartStepper from "../components/ShoppingCartStepper";
 import SimpleDataRow from "../components/SimpleDataRow";
 import SimpleDataRowTitle from "../components/SimpleDataRowTitle";
 import TotalSum from "../components/TotalSum";
 
 const OrderConfirmation = () => {
+  const spacing = 50;
   return (
     <div>
-      <Typography variant="h5" style={{ marginBottom: 50 }} paragraph>
-        Order Confirmation
-      </Typography>
-      <Typography paragraph style={{ fontWeight: "bold", marginBottom: 40 }}>
-        Order Number: #123456789
+      <ShoppingCartStepper step={3} />
+      <Typography variant="h5" style={{ marginBottom: spacing }} paragraph>
+        Review and Confirm Your Order
       </Typography>
       <Grid container spacing={3}>
         <SimpleDataRowTitle />
@@ -30,13 +30,20 @@ const OrderConfirmation = () => {
         <SimpleDataRow name="Shipping" price={100} extraInfo="Snail Mail" />
       </Grid>
       <TotalSum sum={200} />
-      <Typography paragraph style={{ fontWeight: "bold", marginTop: 50 }}>
+      <Typography paragraph style={{ fontWeight: "bold", marginTop: spacing }}>
         Shipping Address
       </Typography>
       <Typography>Maija Meikäläinen</Typography>
       <Typography>Teikäläisentie 1 A 1</Typography>
       <Typography>00100 Helsinki</Typography>
-      <PrevNextButtons nextLink="/" nextTitle="Back to Home" />
+      <Typography paragraph style={{ fontWeight: "bold", marginTop: spacing }}>
+        Payment Method
+      </Typography>
+      <PrevNextButtons
+        prevLink="/shipping-and-payment"
+        nextLink="/order-received"
+        nextTitle="Finish"
+      />
     </div>
   );
 };

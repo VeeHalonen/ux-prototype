@@ -19,6 +19,7 @@ import Reviews from "./views/Reviews";
 import OrderSummary from "./views/OrderSummary";
 import ShippingAndPayment from "./views/ShippingAndPayment";
 import OrderConfirmation from "./views/OrderConfirmation";
+import OrderReceived from "./views/OrderReceived";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -75,7 +76,7 @@ function App() {
               </Grid>
             </div>
           </div>
-          {/* Pages (changing content, don't modify) */}
+          {/* Pages (changing content, don't add non-router code here) */}
           <div>
             {/* ROUTES */}
             <Switch>
@@ -111,6 +112,9 @@ function App() {
               </Route>
               <Route path="/order-confirmation">
                 <OrderConfirmation />
+              </Route>
+              <Route path="/order-received">
+                <OrderReceived />
               </Route>
               <Route path="/">
                 <Home />

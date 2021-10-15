@@ -1,6 +1,6 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import ShoppingCartItem from "../components/ShoppingCartItem";
-import { Link } from "react-router-dom";
+import PrevNextButtons from "../components/PrevNextButtons";
 
 const ShoppingCart = () => {
   return (
@@ -12,11 +12,7 @@ const ShoppingCart = () => {
       <Typography variant="h5" textAlign="end">
         Total: €100
       </Typography>
-      <div style={{ textAlign: "end", marginTop: 30, marginBottom: 100 }}>
-        <Button component={Link} to="/order-summary" variant="contained">
-          To Checkout
-        </Button>
-      </div>
+      <PrevNextButtons nextLink="/order-summary" nextTitle="To Checkout" />
     </div>
   );
 };

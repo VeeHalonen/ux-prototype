@@ -14,7 +14,7 @@ const PrevNextButtons = ({ nextLink, prevLink, nextTitle, prevTitle }) => {
           color="secondary"
           style={{ marginRight: 10, minWidth }}
         >
-          {prevTitle || "Previous"}
+          {prevTitle || "Back"}
         </Button>
       )}
       {/* Next button (if link given) */}
