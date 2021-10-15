@@ -1,4 +1,5 @@
 import { Typography, Grid, Button, TextField } from "@mui/material";
+import StyledLink from "./StyledLink";
 
 const ShoppingCartItem = () => {
   return (
@@ -12,17 +13,17 @@ const ShoppingCartItem = () => {
                 id="logo"
                 src="productImgThumbnail.png"
                 alt="Product Name"
-                width={150}
+                width={140}
               />
             </div>
             <Grid item xs={9}>
-              <Typography
-                variant="body2"
+              <StyledLink
+                name="Product Name"
+                to="/product"
                 paragraph
-                style={{ fontWeight: "bold" }}
-              >
-                Product Name
-              </Typography>
+                textAlign="start"
+                variant="body2"
+              />
               <Typography variant="body2" paragraph>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Ducimus vitae placeat voluptatum iusto obcaecati sed nemo magni

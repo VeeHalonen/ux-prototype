@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
+import { Typography, Card } from "@mui/material";
 import ShoppingCartItem from "../components/ShoppingCartItem";
 import PrevNextButtons from "../components/PrevNextButtons";
 
 const ShoppingCart = () => {
   return (
-    <div>
+    <Card style={{ padding: 50 }}>
       <Typography variant="h5">Shopping Cart</Typography>
       <ShoppingCartItem />
       <ShoppingCartItem />
@@ -13,7 +13,7 @@ const ShoppingCart = () => {
         Total: €100
       </Typography>
       <PrevNextButtons nextLink="/order-summary" nextTitle="To Checkout" />
-    </div>
+    </Card>
   );
 };
 

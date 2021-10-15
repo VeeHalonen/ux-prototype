@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const PrevNextButtons = ({ nextLink, prevLink, nextTitle, prevTitle }) => {
   const minWidth = 100;
   return (
-    <div style={{ textAlign: "end", marginTop: 100, marginBottom: 100 }}>
+    <div style={{ textAlign: "end", marginTop: 100, marginBottom: 10 }}>
       {/* Previous button (if link given) */}
       {prevLink && (
         <Button

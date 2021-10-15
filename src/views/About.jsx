@@ -1,8 +1,8 @@
-import { Typography } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 
 const About = () => {
   return (
-    <div>
+    <Card style={{ padding: 50, paddingBottom: 100 }}>
       <Typography variant="h5" paragraph>
         Company
       </Typography>
@@ -28,7 +28,7 @@ const About = () => {
         <br />
         Hic dicta repudiandae vitae.
       </Typography>
-    </div>
+    </Card>
   );
 };
 

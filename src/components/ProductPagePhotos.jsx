@@ -17,12 +17,16 @@ const ProductPagePhotos = () => {
       <div style={{ width: imgWidth }}>
         <div
           style={{
-            width: 50,
+            width: 65,
             marginLeft: "auto",
             marginRight: "auto",
           }}
         >
-          <MobileStepper steps={4} position="static" />
+          <MobileStepper
+            steps={4}
+            position="static"
+            style={{ backgroundColor: "transparent" }}
+          />
         </div>
       </div>
     </div>

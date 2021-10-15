@@ -1,10 +1,10 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Card } from "@mui/material";
 import ProductInfo from "../components/ProductInfo";
 import ProductPagePhotos from "../components/ProductPagePhotos";
 
 const ProductPage = () => {
   return (
-    <div>
+    <Card style={{ padding: 50 }}>
       <Grid container style={{ marginBottom: 40 }} spacing={5}>
         <Grid item>
           <ProductPagePhotos />
@@ -40,7 +40,7 @@ const ProductPage = () => {
         dolores doloribus praesentium vitae placeat expedita, deserunt quod rem?
         Temporibus amet culpa mollitia nam.
       </Typography>
-    </div>
+    </Card>
   );
 };
 
