@@ -1,4 +1,4 @@
-import { Typography, Grid, Button } from "@mui/material";
+import { Typography, Grid, Button, TextField } from "@mui/material";
 
 const ShoppingCartItem = () => {
   return (
@@ -43,9 +43,23 @@ const ShoppingCartItem = () => {
           alignItems="end"
           direction="column"
         >
-          <Typography textAlign="end" style={{ fontWeight: "bold" }}>
+          <Typography
+            textAlign="end"
+            style={{ fontWeight: "bold", marginRight: 10 }}
+          >
             €50
           </Typography>
+          <TextField
+            label="Amount"
+            type="number"
+            inputProps={{ min: 0, style: { textAlign: "center" } }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            style={{ width: 50 }}
+            defaultValue={1}
+            variant="standard"
+          />
           <Button
             variant="contained"
             size="small"
