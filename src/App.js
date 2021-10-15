@@ -16,6 +16,9 @@ import ShoppingCartDiv from "./components/ShoppingCartDiv";
 import { useState } from "react";
 import ProductPage from "./views/ProductPage";
 import Reviews from "./views/Reviews";
+import OrderSummary from "./views/OrderSummary";
+import ShippingAndPayment from "./views/ShippingAndPayment";
+import OrderConfirmation from "./views/OrderConfirmation";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -99,6 +102,15 @@ function App() {
               </Route>
               <Route path="/reviews">
                 <Reviews />
+              </Route>
+              <Route path="/order-summary">
+                <OrderSummary />
+              </Route>
+              <Route path="/shipping-and-payment">
+                <ShippingAndPayment />
+              </Route>
+              <Route path="/order-confirmation">
+                <OrderConfirmation />
               </Route>
               <Route path="/">
                 <Home />
