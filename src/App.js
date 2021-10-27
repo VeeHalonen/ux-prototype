@@ -20,6 +20,7 @@ import OrderSummary from "./views/OrderSummary";
 import ShippingAndPayment from "./views/ShippingAndPayment";
 import OrderConfirmation from "./views/OrderConfirmation";
 import OrderReceived from "./views/OrderReceived";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -40,6 +41,7 @@ function App() {
         render={(props) => <Search {...props} onAdd={addToCart} />}
       >
         <ThemeProvider theme={theme}>
+          <ScrollToTop />
           <CssBaseline />
           {/* Top part of layout */}
           <Grid container id="topDiv" alignItems="center">
