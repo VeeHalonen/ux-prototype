@@ -42,21 +42,31 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           {/* Top part of layout */}
-          <div id="topDiv">
-            <div>
-              <Link to="/">
+          <Grid container id="topDiv" alignItems="center">
+            <Grid
+              item
+              style={{
+                backgroundColor: "#a6a6a6",
+                marginBottom: 10,
+                padding: 7,
+                paddingBottom: 3,
+              }}
+              xs={12}
+              md={10}
+            >
+              <Link to="/" style={{ width: "100%" }}>
                 <img
                   id="logo"
-                  src="logo.png"
+                  src="logo.jpg"
                   alt="Fans Only Home"
-                  max-width="500px"
+                  style={{ width: "100%" }}
                 />
               </Link>
-            </div>
-            <div>
+            </Grid>
+            <Grid item>
               <ShoppingCartDiv count={shoppingCartItems} />
-            </div>
-          </div>
+            </Grid>
+          </Grid>
           <div id="navDiv">
             <TopMenu />
             <div>
