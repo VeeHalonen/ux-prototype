@@ -54,7 +54,7 @@ function App() {
                     paddingTop: 10,
                     paddingBottom: 5,
                   }}
-                  elevation="none"
+                  elevation={0}
                   square
                 >
                   <img
