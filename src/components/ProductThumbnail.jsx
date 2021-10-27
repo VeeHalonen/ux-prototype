@@ -19,7 +19,7 @@ const ProductThumbnail = (props) => {
         <Link to="/product">
           <img
             id="logo"
-            src="productImgThumbnail.png"
+            src="productImgThumbnail.jpg"
             alt="Product Name"
             width={width - padding * 2}
           />

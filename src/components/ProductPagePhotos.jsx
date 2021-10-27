@@ -6,7 +6,7 @@ const ProductPagePhotos = () => {
   return (
     <div>
       <img
-        src="productImg1.png"
+        src="productImg1.jpg"
         alt="Product Pic 1"
         style={{
           maxWidth: imgWidth,

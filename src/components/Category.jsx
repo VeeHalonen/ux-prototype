@@ -11,7 +11,7 @@ const Category = () => {
         <Link to="/search">
           <img
             id="logo"
-            src="categoryImg.png"
+            src="categoryImg.jpg"
             alt="Category Name"
             width={width - padding * 2}
           />

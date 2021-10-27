@@ -11,7 +11,7 @@ const ShoppingCartItem = () => {
             <div style={{ display: "inline-block", marginRight: 30 }}>
               <img
                 id="logo"
-                src="productImgThumbnail.png"
+                src="productImgThumbnail.jpg"
                 alt="Product Name"
                 width={140}
               />
