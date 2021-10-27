@@ -8,7 +8,7 @@ import Categories from "./views/Categories";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ThemeProvider } from "@mui/system";
 import TopMenu from "./components/TopMenu";
-import { TextField, Grid, CssBaseline } from "@mui/material";
+import { TextField, Grid, CssBaseline, Card } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Products from "./views/Products";
 import Search from "./views/Search";
@@ -43,24 +43,27 @@ function App() {
           <CssBaseline />
           {/* Top part of layout */}
           <Grid container id="topDiv" alignItems="center">
-            <Grid
-              item
-              style={{
-                backgroundColor: "#a6a6a6",
-                marginBottom: 10,
-                padding: 7,
-                paddingBottom: 3,
-              }}
-              xs={12}
-              md={10}
-            >
+            <Grid item xs={12} md={10}>
               <Link to="/" style={{ width: "100%" }}>
-                <img
-                  id="logo"
-                  src="logo.jpg"
-                  alt="Fans Only Home"
-                  style={{ width: "100%" }}
-                />
+                <Card
+                  style={{
+                    // backgroundColor: "#a6a6a6",
+                    background:
+                      "linear-gradient(to right, #607d8b, #a6a6a6, lightgray)",
+                    marginBottom: 5,
+                    paddingTop: 10,
+                    paddingBottom: 5,
+                  }}
+                  elevation="none"
+                  square
+                >
+                  <img
+                    id="logo"
+                    src="logo.png"
+                    alt="Fans Only Home"
+                    style={{ width: "100%" }}
+                  />
+                </Card>
               </Link>
             </Grid>
             <Grid item>
