@@ -1,6 +1,5 @@
 {
   "name": "fans-only-prototype",
-  "homepage": "https://VeeHalonen.github.io/ux-prototype/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
