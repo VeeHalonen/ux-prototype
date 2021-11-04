@@ -1,10 +1,19 @@
 import { Grid, Button, Typography } from "@mui/material";
 import ProductThumbnail from "../components/ProductThumbnail";
 import SearchOptions from "../components/SearchOptions";
+import StyledLink from "../components/StyledLink";
 
 const Search = () => {
   return (
     <Grid container spacing={2}>
+      <Grid item xs={12} style={{ marginBottom: 10 }}>
+        <Typography textAlign="start" variant="h5">
+          <StyledLink to="/products" name="Products" component="span" noBold />
+          <Typography variant="h5" component="span">
+            {" › Search"}
+          </Typography>
+        </Typography>
+      </Grid>
       <Grid item xs={3}>
         <SearchOptions />
       </Grid>

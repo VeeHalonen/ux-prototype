@@ -6,6 +6,10 @@ import StyledLink from "../components/StyledLink";
 const Products = () => {
   return (
     <div style={{ textAlign: "center" }}>
+      {/* PAGE TITLE */}
+      <Typography paragraph variant="h4" textAlign="start">
+        Products
+      </Typography>
       {/* CATEGORIES */}
       <Typography paragraph variant="h5" textAlign="start">
         Categories

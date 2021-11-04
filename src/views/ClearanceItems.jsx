@@ -1,11 +1,15 @@
 import { Button, Typography } from "@mui/material";
 import ProductThumbnail from "../components/ProductThumbnail";
+import StyledLink from "../components/StyledLink";
 
 const ClearanceItems = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <Typography paragraph variant="h5" textAlign="start">
-        Clearance Offers
+      <Typography textAlign="start" variant="h5">
+        <StyledLink to="/products" name="Products" component="span" noBold />
+        <Typography variant="h5" component="span">
+          {" › Clearance Offers"}
+        </Typography>
       </Typography>
       <div
         style={{
