@@ -52,7 +52,7 @@ const TopMenu = () => {
           onMouseOver={handleOpen}
           onMouseLeave={handleClose}
           onClick={handleClickProducts}
-          style={{ borderRadius: 0 }}
+          style={{ borderRadius: 0, borderRight: "1px solid black" }}
           // All of these routes highlight Products
           color={
             [
