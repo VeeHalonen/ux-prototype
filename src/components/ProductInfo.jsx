@@ -1,4 +1,4 @@
-import { Typography, Rating, Grid, Button } from "@mui/material";
+import { Typography, Rating, Grid, Button, TextField } from "@mui/material";
 import StyledLink from "./StyledLink";
 
 const ProductInfo = () => {
@@ -36,6 +36,21 @@ const ProductInfo = () => {
         >
           <Grid item>
             <Typography variant="h4">€100</Typography>
+          </Grid>
+          <Grid item>
+            <Typography component="span" variant="button">
+              Quantity:
+            </Typography>
+            <TextField
+              type="number"
+              inputProps={{ min: 1, style: { textAlign: "center" } }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              style={{ width: 50 }}
+              defaultValue={1}
+              variant="standard"
+            />
           </Grid>
           <Grid item>
             <Button variant="contained">Add to Cart</Button>

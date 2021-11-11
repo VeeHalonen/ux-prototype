@@ -51,7 +51,7 @@ const ShoppingCartItem = () => {
             €50
           </Typography>
           <TextField
-            label="Amount"
+            label="Quantity"
             type="number"
             inputProps={{ min: 0, style: { textAlign: "center" } }}
             InputLabelProps={{
