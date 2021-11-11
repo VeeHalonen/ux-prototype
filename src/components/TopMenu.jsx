@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { Button, ButtonGroup, MenuItem, Paper } from "@mui/material";
 import { useState } from "react";
 
@@ -8,7 +8,9 @@ const usePathname = () => {
 };
 const TopMenu = () => {
   const route = usePathname();
+  const history = useHistory();
   const [productDropdown, setProductDropdown] = useState(false);
+  const [productDropdownHovering, setProductDropdownHovering] = useState(false);
   const activeColor = "primary"; // see theme.js
   const notActiveColor = "inherit";
   const menuItemStyle = { fontSize: 13 };
@@ -18,6 +20,20 @@ const TopMenu = () => {
   };
   const handleClose = () => {
     setProductDropdown(false);
+    setProductDropdownHovering(false);
+  };
+  const handleHoverDropdownEnter = () => {
+    setProductDropdownHovering(true);
+  };
+  const handleHoverDropdownLeave = () => {
+    setProductDropdownHovering(false);
+  };
+  const handleClickProducts = () => {
+    // If dropdown is not currently being hovered over, open products page
+    if (!productDropdownHovering) {
+      history.push("/products");
+      handleClose();
+    }
   };
   return (
     <div>
@@ -35,8 +51,8 @@ const TopMenu = () => {
         <Button
           onMouseOver={handleOpen}
           onMouseLeave={handleClose}
-          component={Link}
-          to="/products"
+          onClick={handleClickProducts}
+          style={{ borderRadius: 0 }}
           // All of these routes highlight Products
           color={
             [
@@ -53,6 +69,8 @@ const TopMenu = () => {
           Products
           {productDropdown && (
             <Paper
+              onMouseOver={handleHoverDropdownEnter}
+              onMouseLeave={handleHoverDropdownLeave}
               style={{ position: "absolute", zIndex: "1000", top: 37, left: 0 }}
               square
             >
@@ -61,6 +79,7 @@ const TopMenu = () => {
                 style={menuItemStyle}
                 component={Link}
                 to="/search"
+                // selected={route === "/search"}
                 onClick={handleClose}
               >
                 Search
@@ -70,6 +89,7 @@ const TopMenu = () => {
                 style={menuItemStyle}
                 component={Link}
                 to="/categories"
+                // selected={route === "/categories"}
                 onClick={handleClose}
               >
                 Categories
@@ -79,6 +99,7 @@ const TopMenu = () => {
                 style={menuItemStyle}
                 component={Link}
                 to="/clearance-items"
+                // selected={route === "/clearance-items"}
                 onClick={handleClose}
               >
                 Clearance Offers
