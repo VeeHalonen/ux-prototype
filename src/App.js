@@ -81,6 +81,7 @@ function App() {
                     placeholder="Search..."
                     variant="outlined"
                     size="small"
+                    style={{ backgroundColor: "white", borderRadius: "5px" }}
                   />
                 </Grid>
                 <Grid item>
