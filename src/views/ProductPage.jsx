@@ -5,12 +5,18 @@ import ProductPagePhotos from "../components/ProductPagePhotos";
 const ProductPage = () => {
   return (
     <Card style={{ padding: 50 }}>
-      <Grid container style={{ marginBottom: 40 }} spacing={5}>
+      <Grid
+        container
+        style={{ marginBottom: 40 }}
+        spacing={3}
+        direction="row-reverse"
+        justifyContent="start"
+      >
+        <Grid item container xs={12} md={7} lg={9}>
+          <ProductInfo />
+        </Grid>
         <Grid item>
           <ProductPagePhotos />
-        </Grid>
-        <Grid item xs={12} md={7} lg={8}>
-          <ProductInfo />
         </Grid>
       </Grid>
       <Grid container item lg={11}>
