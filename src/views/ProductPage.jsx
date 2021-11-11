@@ -9,14 +9,13 @@ const ProductPage = () => {
         container
         style={{ marginBottom: 40 }}
         spacing={3}
-        direction="row-reverse"
         justifyContent="start"
       >
-        <Grid item container xs={12} md={7} lg={9}>
-          <ProductInfo />
-        </Grid>
         <Grid item>
           <ProductPagePhotos />
+        </Grid>
+        <Grid item container xs={12} md={7} lg={8}>
+          <ProductInfo />
         </Grid>
       </Grid>
       <Grid container item lg={11}>

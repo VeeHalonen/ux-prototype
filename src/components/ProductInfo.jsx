@@ -20,7 +20,6 @@ const ProductInfo = () => {
               variant="body2"
             />
           </div>
-
           <Typography paragraph>Some key details here</Typography>
           <Typography paragraph>- cooling</Typography>
           <Typography paragraph>- noise level</Typography>
