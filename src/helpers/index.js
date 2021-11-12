@@ -1,3 +1,31 @@
+export const CATEGORIES = ["Table", "Floor", "Wall-mounted", "Ceiling"];
+export const MATERIALS = ["Plastic", "Aluminum", "Steel"];
+export const COLORS = ["White", "Black", "Gray"];
+export const FEATURES = [
+  "Standalone",
+  "Tripod",
+  "Integrated",
+  "Fanless",
+  "Silent",
+  "Tower Fan",
+];
+export const SIZES = ["Small", "Medium", "Large"];
+export const POWER_CONSUMPTION = ["Low", "Medium", "High"];
+export const SOUND_LEVEL = ["Low", "Medium", "High"];
+
+const NAMES = [
+  "CoolMaster",
+  "Breeze Master",
+  "Air Master",
+  "Heating Beast",
+  "The Ice",
+  "Silent One",
+  "Volcano",
+  "Antarctic+",
+  "Tristar",
+  "Whisper Pro",
+];
+
 const randomNumber = (max) => {
   return Math.floor(Math.random() * max) + 1;
 };
@@ -6,15 +34,40 @@ const randomNumberBetween = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+const randomFromArray = (arr) => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
+// Selects 0-LENGTH values from given array
+const randomFromArrayMultiple = (arr) => {
+  const values = [...arr];
+  const randomValues = [];
+  while (values.length > 0 && Math.floor(Math.random() * 3) !== 0) {
+    const selectedVal = values.splice(
+      Math.floor(Math.random() * values.length),
+      1
+    )[0];
+    randomValues.push(selectedVal);
+  }
+  return randomValues;
+};
+
 export const getRandomProduct = () => {
-  const productName = "Fan #" + randomNumber(10000);
-  const rating = randomNumber(5);
-  const price = randomNumberBetween(10, 1000);
+  const productName = randomFromArray(NAMES) + " #" + randomNumber(10000);
   return {
     productName,
-    rating,
-    price,
+    rating: randomNumber(5),
+    price: randomNumberBetween(10, 1000),
+    category: randomFromArray(CATEGORIES),
     shortInfo: "Some more information\nAbout the product",
+    features: randomFromArrayMultiple(FEATURES),
+    color: randomFromArray(COLORS),
+    material: randomFromArray(MATERIALS),
+    COP: randomNumberBetween(1, 6),
+    size: randomFromArray(SIZES),
+    speedSettings: randomNumber(5),
+    powerConsumption: randomFromArray(POWER_CONSUMPTION),
+    soundLevel: randomFromArray(SOUND_LEVEL),
   };
 };
 
