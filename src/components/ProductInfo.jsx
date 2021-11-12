@@ -28,7 +28,7 @@ const ProductInfo = ({ product }) => {
               variant="body2"
             />
           </div>
-          {property("Category", product.category + " fan")}
+          {property("Type", product.category + " fan")}
           {property("Coefficient of Performance", product.COP + ".0")}
           {property("Noise Level", product.soundLevel)}
           {property("Size", product.size)}

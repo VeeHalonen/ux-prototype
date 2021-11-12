@@ -1,4 +1,5 @@
 import { Grid, Typography, Card } from "@mui/material";
+import ProductDetailsBox from "../components/ProductDetailsBox";
 import ProductInfo from "../components/ProductInfo";
 import ProductPagePhotos from "../components/ProductPagePhotos";
 import { getRandomProduct } from "../helpers";
@@ -35,20 +36,12 @@ const ProductPage = ({ product }) => {
           facere voluptatum, eius libero amet. Ratione, quasi?
         </Typography>
         <Typography paragraph>
-          Explicabo alias illo quasi. Obcaecati quas ipsum nisi quod repellat
-          necessitatibus numquam? Aperiam beatae voluptatum reiciendis nam enim,
-          eligendi eius ab rerum, dolores deserunt non tenetur animi quisquam
-          eveniet asperiores! Facere quia quae a perspiciatis minima tenetur
-          placeat tempore, porro soluta esse rem autem inventore quam quaerat,
-          aliquid, necessitatibus quibusdam dignissimos veritatis voluptas sint
-          ea accusantium similique incidunt vitae? Nulla!
-        </Typography>
-        <Typography paragraph>
           Non excepturi repellat pariatur ducimus distinctio inventore
           recusandae vero obcaecati sequi deleniti exercitationem amet
           perspiciatis eius dolores doloribus praesentium vitae placeat
           expedita, deserunt quod rem? Temporibus amet culpa mollitia nam.
         </Typography>
+        <ProductDetailsBox product={product} />
       </Grid>
     </Card>
   );
