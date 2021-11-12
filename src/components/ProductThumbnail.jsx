@@ -1,11 +1,13 @@
 import { Typography, Card, Rating, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { getRandomProduct } from "../helpers";
 import StyledLink from "./StyledLink";
 
 // Optional prop: discount (boolean) - shows discount info
-const ProductThumbnail = (props) => {
+const ProductThumbnail = ({ discount, product }) => {
   const width = 200;
   const padding = 10;
+  product = getRandomProduct(); // TODO: delete
   return (
     <div
       style={{
@@ -24,24 +26,21 @@ const ProductThumbnail = (props) => {
             width={width - padding * 2}
           />
         </Link>
-        <StyledLink to="/product" name="Product Name" component="p" />
-        <Rating value={3} size="small" readOnly />
-        <Typography variant="body2" textAlign="center">
-          Some more information
-        </Typography>
+        <StyledLink to="/product" name={product.productName} component="p" />
+        <Rating value={product.rating} size="small" readOnly />
         <Typography variant="body2" textAlign="center" paragraph>
-          About the product
+          {product.shortInfo}
         </Typography>
-        {!props.discount && (
+        {!discount && (
           <Typography variant="h5" textAlign="center" paragraph>
-            €100
+            €{product.price}
           </Typography>
         )}
-        {props.discount && (
+        {discount && (
           <Typography variant="h5" textAlign="center" paragraph>
-            <strike>€100</strike> →{" "}
+            <strike>€{product.price}</strike> →{" "}
             <Typography variant="span" color="error">
-              €50
+              €{Math.floor(product.price / 2)}
             </Typography>
           </Typography>
         )}
