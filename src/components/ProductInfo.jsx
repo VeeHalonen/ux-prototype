@@ -1,19 +1,24 @@
 import { Typography, Rating, Grid, TextField } from "@mui/material";
-import { getRandomProduct } from "../helpers";
 import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
 const ProductInfo = ({ product }) => {
-  product = getRandomProduct(); // TODO: delete?
+  const property = (title, value) => {
+    return (
+      <Typography variant="caption" paragraph>
+        <b>{title}</b>: {value}
+      </Typography>
+    );
+  };
   return (
     <Grid item container>
       <Grid item container justifyContent="space-between">
         <Grid item>
           <Typography variant="h5" gutterBottom style={{ marginTop: 10 }}>
-            Product Name
+            {product.productName}
           </Typography>
           <Rating value={3} readOnly />
-          <div style={{ marginLeft: 3 }}>
+          <div style={{ marginLeft: 3, marginBottom: 30 }}>
             <StyledLink
               name="Read Reviews"
               to="/reviews"
@@ -23,11 +28,11 @@ const ProductInfo = ({ product }) => {
               variant="body2"
             />
           </div>
-          <Typography paragraph>Some key details here</Typography>
-          <Typography paragraph>- cooling</Typography>
-          <Typography paragraph>- noise level</Typography>
-          <Typography paragraph>- dimensions</Typography>
-          <Typography paragraph>- ...</Typography>
+          {property("Category", product.category + " fan")}
+          {property("Coefficient of Performance", product.COP + ".0")}
+          {property("Noise Level", product.soundLevel)}
+          {property("Size", product.size)}
+          {property("Speed Settings", product.speedSettings)}
         </Grid>
         <Grid
           item
@@ -38,7 +43,7 @@ const ProductInfo = ({ product }) => {
           spacing={3}
         >
           <Grid item>
-            <Typography variant="h4">€100</Typography>
+            <Typography variant="h4">€{product.price}</Typography>
           </Grid>
           <Grid item>
             <Typography component="span" variant="button">

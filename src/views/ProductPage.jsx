@@ -1,8 +1,11 @@
 import { Grid, Typography, Card } from "@mui/material";
 import ProductInfo from "../components/ProductInfo";
 import ProductPagePhotos from "../components/ProductPagePhotos";
+import { getRandomProduct } from "../helpers";
 
-const ProductPage = () => {
+const ProductPage = ({ product }) => {
+  product = getRandomProduct(); // TODO: delete?
+  console.log(product);
   return (
     <Card style={{ padding: 50 }}>
       <Grid
@@ -15,7 +18,7 @@ const ProductPage = () => {
           <ProductPagePhotos />
         </Grid>
         <Grid item container xs={12} md={7} lg={8}>
-          <ProductInfo />
+          <ProductInfo product={product} />
         </Grid>
       </Grid>
       <Grid container item lg={11}>
