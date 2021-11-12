@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Grid,
   TextField,
@@ -13,6 +14,11 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchOptions = () => {
+  const MAX_PRICE = 1500;
+  const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
+  const handlePriceRangeChange = (event, newValue) => {
+    setPriceRange(newValue);
+  };
   return (
     <Card style={{ padding: 15, width: 210 }}>
       <Grid container spacing={2} direction="column">
@@ -48,8 +54,17 @@ const SearchOptions = () => {
           </Select>
         </Grid>
         <Grid item>
-          <Typography>Range 1</Typography>
-          <Slider defaultValue={50} valueLabelDisplay="auto" />
+          {/* Price Range */}
+          <Typography>
+            <b>Price: </b> {priceRange[0] + "-" + priceRange[1]} €
+          </Typography>
+          <Slider
+            value={priceRange}
+            onChange={handlePriceRangeChange}
+            valueLabelDisplay="off"
+            max={MAX_PRICE}
+          />
+          {/* TODO: */}
           <Typography>Range 2</Typography>
           <Slider defaultValue={50} valueLabelDisplay="auto" />
         </Grid>
