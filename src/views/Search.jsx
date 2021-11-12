@@ -17,15 +17,17 @@ const Search = () => {
       <Grid item xs={3}>
         <SearchOptions />
       </Grid>
-      <Grid item xs={9}>
-        <Typography variant="h5" paragraph>
+      <Grid item xs={9} textAlign="center">
+        <Typography variant="h5" paragraph textAlign="start">
           83 Results
         </Typography>
-        {[...Array(15)].map((e, i) => {
-          return <ProductThumbnail key={i} />;
-        })}
-        <div style={{ textAlign: "center", marginTop: 20 }}>
-          <Button variant="outlined">Load More</Button>
+        <div style={{ textAlign: "center" }}>
+          {[...Array(12)].map((e, i) => {
+            return <ProductThumbnail key={i} />;
+          })}
+          <div style={{ marginTop: 20 }}>
+            <Button variant="outlined">Load More</Button>
+          </div>
         </div>
       </Grid>
     </Grid>
