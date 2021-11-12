@@ -12,13 +12,22 @@ import {
   Slider,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+// import {CATEGORIES, MATERIALS, COLORS, FEATURES, SIZES, POWER_CONSUMPTION, SOUND_LEVEL} from '../helpers'
 
 const SearchOptions = () => {
   const MAX_PRICE = 1500;
+  const [textSearch, setTextSearch] = useState("");
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const handlePriceRangeChange = (event, newValue) => {
     setPriceRange(newValue);
   };
+
+  // const getFilters = () => {
+  //   return {
+  //     textSearch,
+  //     priceRange,
+  //   };
+  // };
   return (
     <Card style={{ padding: 15, width: 210 }}>
       <Grid container spacing={2} direction="column">
@@ -29,6 +38,8 @@ const SearchOptions = () => {
               variant="outlined"
               size="small"
               style={{ width: 140 }}
+              value={textSearch}
+              onChange={(e) => setTextSearch(e.target.value)}
             />
           </Grid>
           <Grid item>
