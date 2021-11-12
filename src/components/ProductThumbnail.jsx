@@ -1,13 +1,14 @@
-import { Typography, Card, Rating, Button } from "@mui/material";
+import { Typography, Card, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 import { getRandomProduct } from "../helpers";
+import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
 // Optional prop: discount (boolean) - shows discount info
 const ProductThumbnail = ({ discount, product }) => {
   const width = 200;
   const padding = 10;
-  product = getRandomProduct(); // TODO: delete
+  product = getRandomProduct(); // TODO: delete?
   return (
     <div
       style={{
@@ -44,10 +45,7 @@ const ProductThumbnail = ({ discount, product }) => {
             </Typography>
           </Typography>
         )}
-
-        <Button variant="contained" size="small">
-          Add to Cart
-        </Button>
+        <AddToCartButton product={product} />
       </Card>
     </div>
   );

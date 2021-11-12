@@ -1,7 +1,10 @@
-import { Typography, Rating, Grid, Button, TextField } from "@mui/material";
+import { Typography, Rating, Grid, TextField } from "@mui/material";
+import { getRandomProduct } from "../helpers";
+import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
-const ProductInfo = () => {
+const ProductInfo = ({ product }) => {
+  product = getRandomProduct(); // TODO: delete?
   return (
     <Grid item container>
       <Grid item container justifyContent="space-between">
@@ -53,7 +56,7 @@ const ProductInfo = () => {
             />
           </Grid>
           <Grid item>
-            <Button variant="contained">Add to Cart</Button>
+            <AddToCartButton product={product} />
           </Grid>
         </Grid>
       </Grid>
