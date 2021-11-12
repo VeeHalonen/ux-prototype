@@ -2,51 +2,45 @@ import { Typography, Card } from "@mui/material";
 import Category from "../components/Category";
 import ProductThumbnail from "../components/ProductThumbnail";
 import StyledLink from "../components/StyledLink";
+import { CATEGORIES } from "../helpers";
 
 const Products = () => {
   return (
     <div style={{ textAlign: "center" }}>
       {/* PAGE TITLE */}
-      <Typography paragraph variant="h4" textAlign="start">
+      <Typography
+        paragraph
+        variant="h4"
+        textAlign="start"
+        style={{ marginBottom: 30 }}
+      >
         Products
       </Typography>
       {/* CATEGORIES */}
-      <Typography paragraph variant="h5" textAlign="start">
+      <Typography paragraph variant="h5">
         Categories
       </Typography>
       <div
         style={{
-          marginTop: 20,
-          marginBottom: 30,
+          marginTop: 30,
+          marginBottom: 50,
         }}
       >
-        {[...Array(8)].map((e, i) => {
-          return <Category key={i} />;
+        {CATEGORIES.map((c, i) => {
+          return <Category key={i} category={c} />;
         })}
       </div>
-      <Card
-        style={{
-          margin: 40,
-          marginTop: 0,
-          marginBottom: 40,
-          paddingTop: 8,
-          paddingBottom: 8,
-        }}
-        color="primary"
-      >
-        <StyledLink name="All Categories" to="/categories" component="p" />
-      </Card>
       {/* CLEARANCE OFFERS */}
-      <Typography paragraph variant="h5" textAlign="start">
+      <Typography paragraph variant="h5">
         Clearance Offers
       </Typography>
       <div
         style={{
-          marginTop: 20,
+          marginTop: 30,
           marginBottom: 30,
         }}
       >
-        {[...Array(8)].map((e, i) => {
+        {[...Array(4)].map((e, i) => {
           return <ProductThumbnail key={i} discount={true} />;
         })}
       </div>
@@ -57,6 +51,9 @@ const Products = () => {
           marginBottom: 40,
           paddingTop: 8,
           paddingBottom: 8,
+          width: "60%",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
         color="primary"
       >

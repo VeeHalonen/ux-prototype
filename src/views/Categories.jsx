@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import Category from "../components/Category";
 import StyledLink from "../components/StyledLink";
+import { CATEGORIES } from "../helpers";
 
 const Categories = () => {
   return (
@@ -17,8 +18,8 @@ const Categories = () => {
           marginBottom: 30,
         }}
       >
-        {[...Array(16)].map((e, i) => {
-          return <Category key={i} />;
+        {CATEGORIES.map((c, i) => {
+          return <Category key={i} category={c} wide />;
         })}
       </div>
     </div>
