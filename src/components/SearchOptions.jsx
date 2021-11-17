@@ -10,6 +10,8 @@ import {
   MenuItem,
   Select,
   Slider,
+  Button,
+  IconButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import {
@@ -23,10 +25,20 @@ import {
   MAX_PRICE,
 } from "../helpers";
 
-const SearchOptions = () => {
-  const [textSearch, setTextSearch] = useState("");
-  const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
-  const [category, setCategory] = useState("ALL");
+const DEFAULT_FILTERS = {
+  textSearch: "",
+  priceRange: [0, MAX_PRICE],
+  category: "ALL",
+  discountedOnly: false,
+};
+
+const SearchOptions = ({ applyFilter }) => {
+  const [textSearch, setTextSearch] = useState(DEFAULT_FILTERS.textSearch);
+  const [priceRange, setPriceRange] = useState(DEFAULT_FILTERS.priceRange);
+  const [category, setCategory] = useState(DEFAULT_FILTERS.category);
+  const [discountedOnly, setDiscountedOnly] = useState(
+    DEFAULT_FILTERS.discountedOnly
+  );
   const handlePriceRangeChange = (event, newValue) => {
     setPriceRange(newValue);
   };
@@ -70,15 +82,30 @@ const SearchOptions = () => {
       </Select>
     );
   };
-  // const getFilters = () => {
-  //   return {
-  //     textSearch,
-  //     priceRange,
-  //   };
-  // };
+  const getFilters = () => {
+    return {
+      textSearch,
+      priceRange,
+      category,
+      discountedOnly,
+    };
+  };
+  const triggerFilter = () => {
+    applyFilter(getFilters());
+  };
+  const resetFilters = () => {
+    // Set values
+    setTextSearch(DEFAULT_FILTERS.textSearch);
+    setPriceRange(DEFAULT_FILTERS.priceRange);
+    setCategory(DEFAULT_FILTERS.category);
+    setDiscountedOnly(DEFAULT_FILTERS.setDiscountedOnly);
+    // Send to parent
+    applyFilter(DEFAULT_FILTERS);
+  };
   return (
     <Card style={{ padding: 15, width: 210 }}>
       <Grid container spacing={2} direction="column">
+        <Grid item>{title("Search Filters")}</Grid>
         <Grid container item alignItems="center" spacing={1}>
           <Grid item>
             <TextField
@@ -88,18 +115,16 @@ const SearchOptions = () => {
               style={{ width: 140 }}
               value={textSearch}
               onChange={(e) => setTextSearch(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  triggerFilter();
+                }
+              }}
             />
+            <IconButton size="small" onClick={triggerFilter}>
+              <SearchIcon color="primary" />
+            </IconButton>
           </Grid>
-          <Grid item>
-            <SearchIcon color="primary" />
-          </Grid>
-        </Grid>
-        <Grid item>{title("Filters")}</Grid>
-        <Grid item>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Option 1" />
-            <FormControlLabel control={<Checkbox />} label="Option 2" />
-          </FormGroup>
         </Grid>
         <Grid item>{title("Category")}</Grid>
         <Grid item>{select(CATEGORIES, category, setCategory)}</Grid>
@@ -110,8 +135,33 @@ const SearchOptions = () => {
           </Typography>
           {rangeSlider(priceRange, 0, MAX_PRICE, handlePriceRangeChange)}
           {/* TODO: */}
-          <Typography>Range 2</Typography>
-          <Slider defaultValue={50} valueLabelDisplay="auto" />
+          {/* <Typography>Range 2</Typography>
+          <Slider defaultValue={50} valueLabelDisplay="auto" /> */}
+        </Grid>
+        {/* Discounted Only */}
+        <Grid item>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={discountedOnly}
+                  onChange={(e) => setDiscountedOnly(e.target.checked)}
+                />
+              }
+              label="Discounted Only"
+            />
+          </FormGroup>
+        </Grid>
+        {/* Buttons */}
+        <Grid item>
+          <Button variant="contained" fullWidth onClick={triggerFilter}>
+            Search
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button variant="outlined" fullWidth onClick={resetFilters}>
+            Reset Filters
+          </Button>
         </Grid>
       </Grid>
     </Card>

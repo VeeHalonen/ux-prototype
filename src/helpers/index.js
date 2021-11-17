@@ -56,10 +56,12 @@ const randomFromArrayMultiple = (arr) => {
 
 export const getRandomProduct = () => {
   const productName = randomFromArray(NAMES) + " #" + randomNumber(10000);
+  const price = randomNumberBetween(10, MAX_PRICE);
   return {
     productName,
     rating: randomNumber(5),
-    price: randomNumberBetween(10, MAX_PRICE),
+    price: price,
+    discount: Math.random() >= 0.8 ? true : false,
     category: randomFromArray(CATEGORIES),
     shortInfo: "Some more information\nAbout the product",
     features: randomFromArrayMultiple(FEATURES),

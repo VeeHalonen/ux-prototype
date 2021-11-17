@@ -21,6 +21,7 @@ import ShippingAndPayment from "./views/ShippingAndPayment";
 import OrderConfirmation from "./views/OrderConfirmation";
 import OrderReceived from "./views/OrderReceived";
 import ScrollToTop from "./components/ScrollToTop";
+import { getRandomProducts } from "./helpers";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -33,6 +34,11 @@ function App() {
   const [shoppingCartItems, setShoppingCartItems] = useState(2);
   const addToCart = () => {
     setShoppingCartItems(shoppingCartItems + 1);
+  };
+  const products = getRandomProducts(20);
+
+  const navigateTo = (path) => {
+    window.open(path, "_self");
   };
   return (
     <div className="App">
@@ -82,6 +88,11 @@ function App() {
                     variant="outlined"
                     size="small"
                     style={{ backgroundColor: "white", borderRadius: "5px" }}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        navigateTo("/search");
+                      }
+                    }}
                   />
                 </Grid>
                 <Grid item>
@@ -103,7 +114,7 @@ function App() {
                 <Products />
               </Route>
               <Route path="/search">
-                <Search />
+                <Search products={products} />
               </Route>
               <Route path="/shopping-cart">
                 <ShoppingCart />

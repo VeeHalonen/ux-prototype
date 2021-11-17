@@ -8,7 +8,11 @@ import StyledLink from "./StyledLink";
 const ProductThumbnail = ({ discount, product }) => {
   const width = 200;
   const padding = 10;
-  product = getRandomProduct(); // TODO: delete?
+  if (!product) product = getRandomProduct(); // TODO: delete?
+  // TODO: fix so that discount prop is no longer needed
+  if (!discount) {
+    discount = product?.discount;
+  }
   return (
     <div
       style={{
