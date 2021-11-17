@@ -29,10 +29,18 @@ const ProductThumbnail = ({ discount, product }) => {
             src="productImgThumbnail.jpg"
             alt="Product Name"
             width={width - padding * 2}
+            onClick={() =>
+              localStorage.setItem("product", JSON.stringify(product))
+            }
           />
         </Link>
         <div style={{ minHeight: 150 }}>
-          <StyledLink to="/product" name={product.productName} component="p" />
+          <StyledLink
+            to="/product"
+            name={product.productName}
+            component="p"
+            product={product}
+          />
           <Rating value={product.rating} size="small" readOnly />
           <Typography variant="body2" textAlign="center" paragraph>
             {product.shortInfo}

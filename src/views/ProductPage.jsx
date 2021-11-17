@@ -4,9 +4,9 @@ import ProductInfo from "../components/ProductInfo";
 import ProductPagePhotos from "../components/ProductPagePhotos";
 import { getRandomProduct } from "../helpers";
 
-const ProductPage = ({ product }) => {
-  product = getRandomProduct(); // TODO: delete?
-  console.log(product);
+const ProductPage = () => {
+  const product =
+    JSON.parse(localStorage.getItem("product")) || getRandomProduct(); // TODO: ?
   return (
     <Card style={{ padding: 50 }}>
       <Grid

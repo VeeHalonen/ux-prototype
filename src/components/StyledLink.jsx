@@ -9,12 +9,18 @@ const StyledLink = ({
   textAlign,
   variant,
   noBold,
+  product, // if given, save to LocalStorage on click
 }) => {
   const align = textAlign || "center";
   const variant2 = variant || "body";
   const fontWeight = noBold ? "normal" : "bold";
+  const click = () => {
+    if (product) {
+      localStorage.setItem("product", JSON.stringify(product));
+    }
+  };
   return (
-    <MUILink component={Link} to={to} underline="hover">
+    <MUILink component={Link} to={to} underline="hover" onClick={click}>
       <Typography
         variant={variant2}
         component={component}

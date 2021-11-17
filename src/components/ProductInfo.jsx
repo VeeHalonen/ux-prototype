@@ -17,7 +17,7 @@ const ProductInfo = ({ product }) => {
           <Typography variant="h5" gutterBottom style={{ marginTop: 10 }}>
             {product.productName}
           </Typography>
-          <Rating value={3} readOnly />
+          <Rating value={product.rating} readOnly />
           <div style={{ marginLeft: 3, marginBottom: 30 }}>
             <StyledLink
               name="Read Reviews"

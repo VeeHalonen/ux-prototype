@@ -23,6 +23,7 @@ const ShoppingCartItem = () => {
                 paragraph
                 textAlign="start"
                 variant="body2"
+                // TODO: product=?
               />
               <Typography variant="body2" paragraph>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
