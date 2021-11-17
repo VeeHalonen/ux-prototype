@@ -144,7 +144,7 @@ const SearchOptions = ({ applyFilter }) => {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={discountedOnly}
+                  value={discountedOnly}
                   onChange={(e) => setDiscountedOnly(e.target.checked)}
                 />
               }
