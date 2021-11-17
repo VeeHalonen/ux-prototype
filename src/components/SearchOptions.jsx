@@ -20,10 +20,10 @@ import {
   // SIZES,
   // POWER_CONSUMPTION,
   // SOUND_LEVEL,
+  MAX_PRICE,
 } from "../helpers";
 
 const SearchOptions = () => {
-  const MAX_PRICE = 1500;
   const [textSearch, setTextSearch] = useState("");
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [category, setCategory] = useState("ALL");

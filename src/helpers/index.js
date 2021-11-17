@@ -1,3 +1,5 @@
+export const MAX_PRICE = 500;
+
 export const CATEGORIES = ["Table", "Floor", "Wall-mounted", "Ceiling"];
 export const MATERIALS = ["Plastic", "Aluminum", "Steel"];
 export const COLORS = ["White", "Black", "Gray"];
@@ -57,7 +59,7 @@ export const getRandomProduct = () => {
   return {
     productName,
     rating: randomNumber(5),
-    price: randomNumberBetween(10, 1000),
+    price: randomNumberBetween(10, MAX_PRICE),
     category: randomFromArray(CATEGORIES),
     shortInfo: "Some more information\nAbout the product",
     features: randomFromArrayMultiple(FEATURES),
