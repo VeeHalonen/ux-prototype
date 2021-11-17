@@ -26,7 +26,9 @@ const Search = () => {
             return <ProductThumbnail key={i} />;
           })}
           <div style={{ marginTop: 20 }}>
-            <Button variant="outlined">Load More</Button>
+            <Button variant="outlined" disabled>
+              Load More
+            </Button>
           </div>
         </div>
       </Grid>

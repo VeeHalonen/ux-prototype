@@ -21,7 +21,9 @@ const ClearanceItems = () => {
           return <ProductThumbnail key={i} discount={true} />;
         })}
       </div>
-      <Button variant="outlined">Load More</Button>
+      <Button variant="outlined" disabled>
+        Load More
+      </Button>
     </div>
   );
 };
