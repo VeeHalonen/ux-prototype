@@ -19,11 +19,11 @@ const Search = () => {
       </Grid>
       <Grid item xs={9} textAlign="center">
         <Typography variant="h5" paragraph textAlign="start">
-          83 Results
+          12 Results
         </Typography>
         <div style={{ textAlign: "center" }}>
           {[...Array(12)].map((e, i) => {
-            return <ProductThumbnail key={i} />;
+            return <ProductThumbnail key={i} discount={Math.random() >= 0.8} />;
           })}
           <div style={{ marginTop: 20 }}>
             <Button variant="outlined" disabled>
