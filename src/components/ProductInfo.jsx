@@ -43,7 +43,18 @@ const ProductInfo = ({ product }) => {
           spacing={3}
         >
           <Grid item>
-            <Typography variant="h4">€{product.price}</Typography>
+            {!product.discount && (
+              <Typography variant="h4">€{product.price}</Typography>
+            )}
+            {product.discount && (
+              <Typography variant="h4">
+                <strike>€{product.price}</strike>
+                <br />
+                <Typography variant="span" color="error">
+                  €{Math.floor(product.price / 2)}
+                </Typography>
+              </Typography>
+            )}
           </Grid>
           <Grid item>
             <Typography component="span" variant="button">
