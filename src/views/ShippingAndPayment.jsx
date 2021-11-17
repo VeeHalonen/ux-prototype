@@ -6,11 +6,17 @@ import {
   Grid,
   Card,
 } from "@mui/material";
+import { useContext, useState } from "react";
 import CustomerDetailsForm from "../components/CustomerDetailsForm";
 import PrevNextButtons from "../components/PrevNextButtons";
 import ShoppingCartStepper from "../components/ShoppingCartStepper";
+import { getTotalPrice, GlobalStateContext } from "../helpers";
 
 const ShippingAndPayment = () => {
+  const [shipping, setShipping] = useState(100);
+  const context = useContext(GlobalStateContext);
+  const products = context?.globalState?.shoppingCart;
+  const totalPrice = products ? getTotalPrice(products) : 100;
   const headerStyle = { fontWeight: "bold", marginTop: 30 };
   const getLabel = (name, price, deliveryTime) => {
     return (
@@ -63,29 +69,32 @@ const ShippingAndPayment = () => {
                 marginTop: 25,
               }}
             >
-              {getPriceRow("Products", 100)}
-              {getPriceRow("Shipping", 100)}
+              {getPriceRow("Products", totalPrice)}
+              {getPriceRow("Shipping", shipping)}
               <hr />
-              {getPriceRow("Total", 200)}
+              {getPriceRow("Total", totalPrice + shipping)}
             </Card>
           </Grid>
         </Grid>
         <Typography paragraph style={headerStyle}>
           Shipping
         </Typography>
-        <RadioGroup defaultValue="Snail Mail">
+        <RadioGroup
+          value={shipping}
+          onChange={(e) => setShipping(parseInt(e.target.value))}
+        >
           <FormControlLabel
-            value="Snail Mail"
+            value={100}
             control={<Radio />}
             label={getLabel("Snail Mail", 100, "1+ years")}
           />
           <FormControlLabel
-            value="Carrier Pigeon"
+            value={500}
             control={<Radio />}
             label={getLabel("Carrier Pigeon", 500, "2-3 weeks")}
           />
           <FormControlLabel
-            value="Other"
+            value={2000}
             control={<Radio />}
             label={getLabel("African Swallow", 2000, "3-5 days")}
           />
