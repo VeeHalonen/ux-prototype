@@ -1,8 +1,15 @@
+import { useContext, useEffect } from "react";
+import { GlobalStateContext } from "../helpers";
 import { Typography, Card } from "@mui/material";
 import PrevNextButtons from "../components/PrevNextButtons";
 import ShoppingCartStepper from "../components/ShoppingCartStepper";
 
 const OrderReceived = () => {
+  const context = useContext(GlobalStateContext);
+  useEffect(() => {
+    context.dispatch({ type: "emptyCart" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <ShoppingCartStepper step={4} />

@@ -128,6 +128,8 @@ export const globalStateReducer = (state, { type, product }) => {
       const afterRemove =
         state.shoppingCartItems > 0 ? state.shoppingCartItems - 1 : 0;
       return { ...state, shoppingCartItems: afterRemove };
+    case "emptyCart":
+      return { ...state, shoppingCartItems: 0 };
     default:
       return state;
   }
