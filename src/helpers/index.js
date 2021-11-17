@@ -109,11 +109,31 @@ export const getRandomProducts = (quantity) => {
   return randomProducts;
 };
 
+// Returns product price after potential discount
+export const getProductPrice = (product) => {
+  if (product.discount) {
+    return Math.floor(product.price / 2);
+  } else return product.price;
+};
+
+// Get total price of products in array
+export const getTotalPrice = (products) => {
+  let totalPrice = 0;
+  products.forEach((p) => {
+    totalPrice += getProductPrice(p);
+  });
+  return totalPrice;
+};
+
 /* GLOBAL CONTEXT */
 
 const exampleProducts = getRandomProducts(17).concat(getExampleProducts());
 
-export const initialState = { shoppingCartItems: 0, products: exampleProducts };
+export const initialState = {
+  shoppingCart: [],
+  shoppingCartItems: 0,
+  products: exampleProducts,
+};
 
 // const context = useContext(GlobalStateContext);
 // context.globalState.products
@@ -122,14 +142,22 @@ export const initialState = { shoppingCartItems: 0, products: exampleProducts };
 export const globalStateReducer = (state, { type, product }) => {
   switch (type) {
     case "addToCart":
-      const afterAdd = state.shoppingCartItems + 1;
-      return { ...state, shoppingCartItems: afterAdd };
+      return {
+        ...state,
+        shoppingCartItems: state.shoppingCartItems + 1,
+        shoppingCart: [...state.shoppingCart, product],
+      };
     case "removeFromCart":
-      const afterRemove =
-        state.shoppingCartItems > 0 ? state.shoppingCartItems - 1 : 0;
-      return { ...state, shoppingCartItems: afterRemove };
+      const afterRemoveCart = state.shoppingCart.filter(
+        (p) => p.productName !== product.productName
+      );
+      return {
+        ...state,
+        shoppingCartItems: afterRemoveCart.length,
+        shoppingCart: afterRemoveCart,
+      };
     case "emptyCart":
-      return { ...state, shoppingCartItems: 0 };
+      return { ...state, shoppingCartItems: 0, shoppingCart: [] };
     default:
       return state;
   }

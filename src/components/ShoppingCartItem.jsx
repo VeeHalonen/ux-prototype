@@ -1,7 +1,11 @@
 import { Typography, Grid, Button, TextField } from "@mui/material";
+import { getProductPrice } from "../helpers";
 import StyledLink from "./StyledLink";
 
-const ShoppingCartItem = () => {
+const ShoppingCartItem = ({ product, context }) => {
+  const removeFromCart = () => {
+    context.dispatch({ type: "removeFromCart", product });
+  };
   return (
     <div>
       <hr style={{ marginTop: 25, marginBottom: 25 }} />
@@ -18,12 +22,12 @@ const ShoppingCartItem = () => {
             </div>
             <Grid item xs={9}>
               <StyledLink
-                name="Product Name"
+                name={product.productName}
                 to="/product"
                 paragraph
                 textAlign="start"
                 variant="body2"
-                // TODO: product=?
+                product={product}
               />
               <Typography variant="body2" paragraph>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -49,7 +53,7 @@ const ShoppingCartItem = () => {
             textAlign="end"
             style={{ fontWeight: "bold", marginRight: 10 }}
           >
-            €50
+            €{getProductPrice(product)}
           </Typography>
           <TextField
             label="Quantity"
@@ -67,6 +71,7 @@ const ShoppingCartItem = () => {
             size="small"
             color="secondary"
             style={{ width: 100 }}
+            onClick={removeFromCart}
           >
             Remove
           </Button>

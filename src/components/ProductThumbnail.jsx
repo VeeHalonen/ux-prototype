@@ -1,6 +1,6 @@
 import { Typography, Card, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getRandomProduct } from "../helpers";
+import { getProductPrice, getRandomProduct } from "../helpers";
 import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
@@ -54,7 +54,7 @@ const ProductThumbnail = ({ discount, product }) => {
             <Typography variant="h5" textAlign="center" paragraph>
               <strike>€{product.price}</strike> →{" "}
               <Typography variant="span" color="error">
-                €{Math.floor(product.price / 2)}
+                €{getProductPrice(product)}
               </Typography>
             </Typography>
           )}

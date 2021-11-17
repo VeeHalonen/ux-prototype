@@ -1,4 +1,5 @@
 import { Typography, Rating, Grid, TextField } from "@mui/material";
+import { getProductPrice } from "../helpers";
 import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
@@ -51,7 +52,7 @@ const ProductInfo = ({ product }) => {
                 <strike>€{product.price}</strike>
                 <br />
                 <Typography variant="span" color="error">
-                  €{Math.floor(product.price / 2)}
+                  €{getProductPrice(product)}
                 </Typography>
               </Typography>
             )}
