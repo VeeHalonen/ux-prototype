@@ -1,3 +1,5 @@
+import { createContext } from "react";
+
 export const MAX_PRICE = 500;
 
 export const CATEGORIES = ["Table", "Floor", "Wall-mounted", "Ceiling"];
@@ -106,3 +108,29 @@ export const getRandomProducts = (quantity) => {
   }
   return randomProducts;
 };
+
+/* GLOBAL CONTEXT */
+
+const exampleProducts = getRandomProducts(17).concat(getExampleProducts());
+
+export const initialState = { shoppingCartItems: 0, products: exampleProducts };
+
+// const context = useContext(GlobalStateContext);
+// context.globalState.products
+// context.globalState.shoppingCartItems
+// context.dispatch({ type: "addToCart", product });
+export const globalStateReducer = (state, { type, product }) => {
+  switch (type) {
+    case "addToCart":
+      const afterAdd = state.shoppingCartItems + 1;
+      return { ...state, shoppingCartItems: afterAdd };
+    case "removeFromCart":
+      const afterRemove =
+        state.shoppingCartItems > 0 ? state.shoppingCartItems - 1 : 0;
+      return { ...state, shoppingCartItems: afterRemove };
+    default:
+      return state;
+  }
+};
+
+export const GlobalStateContext = createContext();

@@ -1,11 +1,14 @@
 import { Grid, Button, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ProductThumbnail from "../components/ProductThumbnail";
 import SearchOptions from "../components/SearchOptions";
 import StyledLink from "../components/StyledLink";
+import { GlobalStateContext } from "../helpers";
 
-const Search = ({ products }) => {
+const Search = () => {
   const [filters, setFilters] = useState(null);
+  const context = useContext(GlobalStateContext);
+  const products = context?.globalState?.products || [];
 
   // Checks product against filters, returns true if product should be shown
   const passesFilters = (product) => {

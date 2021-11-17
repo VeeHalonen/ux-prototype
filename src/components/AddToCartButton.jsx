@@ -1,11 +1,14 @@
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { GlobalStateContext } from "../helpers";
 import Toast from "./Toast";
 
 const AddToCartButton = ({ product }) => {
+  const context = useContext(GlobalStateContext);
   const [toast, setToast] = useState(false);
   const addToCart = () => {
     setToast(true);
+    context.dispatch({ type: "addToCart", product });
   };
   const hideToast = () => {
     setToast(false);
