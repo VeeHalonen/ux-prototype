@@ -31,24 +31,26 @@ const ProductThumbnail = ({ discount, product }) => {
             width={width - padding * 2}
           />
         </Link>
-        <StyledLink to="/product" name={product.productName} component="p" />
-        <Rating value={product.rating} size="small" readOnly />
-        <Typography variant="body2" textAlign="center" paragraph>
-          {product.shortInfo}
-        </Typography>
-        {!discount && (
-          <Typography variant="h5" textAlign="center" paragraph>
-            €{product.price}
+        <div style={{ minHeight: 150 }}>
+          <StyledLink to="/product" name={product.productName} component="p" />
+          <Rating value={product.rating} size="small" readOnly />
+          <Typography variant="body2" textAlign="center" paragraph>
+            {product.shortInfo}
           </Typography>
-        )}
-        {discount && (
-          <Typography variant="h5" textAlign="center" paragraph>
-            <strike>€{product.price}</strike> →{" "}
-            <Typography variant="span" color="error">
-              €{Math.floor(product.price / 2)}
+          {!discount && (
+            <Typography variant="h5" textAlign="center" paragraph>
+              €{product.price}
             </Typography>
-          </Typography>
-        )}
+          )}
+          {discount && (
+            <Typography variant="h5" textAlign="center" paragraph>
+              <strike>€{product.price}</strike> →{" "}
+              <Typography variant="span" color="error">
+                €{Math.floor(product.price / 2)}
+              </Typography>
+            </Typography>
+          )}
+        </div>
         <AddToCartButton product={product} />
       </Card>
     </div>

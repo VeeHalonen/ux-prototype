@@ -21,7 +21,7 @@ import ShippingAndPayment from "./views/ShippingAndPayment";
 import OrderConfirmation from "./views/OrderConfirmation";
 import OrderReceived from "./views/OrderReceived";
 import ScrollToTop from "./components/ScrollToTop";
-import { getRandomProducts } from "./helpers";
+import { getExampleProducts, getRandomProducts } from "./helpers";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -35,7 +35,7 @@ function App() {
   const addToCart = () => {
     setShoppingCartItems(shoppingCartItems + 1);
   };
-  const products = getRandomProducts(20);
+  const products = [...getRandomProducts(17), ...getExampleProducts()];
 
   const navigateTo = (path) => {
     window.open(path, "_self");

@@ -75,6 +75,29 @@ export const getRandomProduct = () => {
   };
 };
 
+export const getExampleProducts = () => {
+  const exampleProducts = [];
+  // Under €30
+  const ex1 = getRandomProduct();
+  ex1.price = 25;
+  ex1.discount = false;
+  exampleProducts.push(ex1);
+  // Black & Decker, White 16'' Stand Fan
+  const ex2 = getRandomProduct();
+  ex2.productName = "Black & Decker BFSR16W";
+  ex2.category = "Floor";
+  ex2.color = "White";
+  ex2.shortInfo = "White 16'' Stand Fan";
+  exampleProducts.push(ex2);
+  // Between 200-350
+  const ex3 = getRandomProduct();
+  ex3.price = 275;
+  ex3.discount = false;
+  exampleProducts.push(ex3);
+
+  return exampleProducts;
+};
+
 // Get n number of random products
 export const getRandomProducts = (quantity) => {
   const randomProducts = [];
