@@ -22,7 +22,7 @@ const Home = () => {
         </Link>
       </Grid>
       <Grid item>
-        <Link to="/search">
+        <Link to={"/search?latestOnly=true"}>
           <img
             src="bannerLatest.jpeg"
             alt="Latest"

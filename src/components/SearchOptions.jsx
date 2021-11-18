@@ -30,12 +30,16 @@ const DEFAULT_FILTERS = {
   priceRange: [0, MAX_PRICE],
   category: "ALL",
   discountedOnly: false,
+  latestOnly: false,
 };
 
 const SearchOptions = ({ applyFilter }) => {
   // Read query parameters
   const params = new URLSearchParams(window.location.search);
   const initialCategory = params.get("category") || DEFAULT_FILTERS.category;
+  const initialLatestOnly = params.get("latestOnly")
+    ? true
+    : DEFAULT_FILTERS.latestOnly;
 
   const [textSearch, setTextSearch] = useState(DEFAULT_FILTERS.textSearch);
   const [priceRange, setPriceRange] = useState(DEFAULT_FILTERS.priceRange);
@@ -43,6 +47,7 @@ const SearchOptions = ({ applyFilter }) => {
   const [discountedOnly, setDiscountedOnly] = useState(
     DEFAULT_FILTERS.discountedOnly
   );
+  const [latestOnly, setLatestOnly] = useState(initialLatestOnly);
 
   // Trigger filter on mount
   useEffect(() => {
@@ -99,6 +104,7 @@ const SearchOptions = ({ applyFilter }) => {
       priceRange,
       category,
       discountedOnly,
+      latestOnly,
     };
   };
   const triggerFilter = () => {
@@ -110,6 +116,7 @@ const SearchOptions = ({ applyFilter }) => {
     setPriceRange(DEFAULT_FILTERS.priceRange);
     setCategory(DEFAULT_FILTERS.category);
     setDiscountedOnly(DEFAULT_FILTERS.setDiscountedOnly);
+    setLatestOnly(DEFAULT_FILTERS.setLatestOnly);
     // Send to parent
     applyFilter(DEFAULT_FILTERS);
   };
@@ -155,11 +162,25 @@ const SearchOptions = ({ applyFilter }) => {
             <FormControlLabel
               control={
                 <Checkbox
+                  defaultChecked={discountedOnly}
                   value={discountedOnly}
                   onChange={(e) => setDiscountedOnly(e.target.checked)}
                 />
               }
               label="Discounted Only"
+            />
+          </FormGroup>
+          {/* Neew Only */}
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  defaultChecked={latestOnly}
+                  value={latestOnly}
+                  onChange={(e) => setLatestOnly(e.target.checked)}
+                />
+              }
+              label="Latest Only"
             />
           </FormGroup>
         </Grid>

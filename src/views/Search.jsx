@@ -25,6 +25,10 @@ const Search = () => {
     if (filters.discountedOnly && !product.discount) {
       return false;
     }
+    // Latest only?
+    if (filters.latestOnly && !product.latest) {
+      return false;
+    }
     // Price
     if (product.discount) {
       if (

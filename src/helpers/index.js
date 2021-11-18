@@ -64,6 +64,7 @@ export const getRandomProduct = () => {
     rating: randomNumber(5),
     price: price,
     discount: Math.random() >= 0.8 ? true : false,
+    latest: Math.random() >= 0.8 ? true : false,
     category: randomFromArray(CATEGORIES),
     shortInfo: "Some more information\nAbout the product",
     features: randomFromArrayMultiple(FEATURES),
