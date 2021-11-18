@@ -106,7 +106,7 @@ const TopMenu = () => {
                 // selected={route === "/clearance-items"}
                 onClick={handleClose}
               >
-                Clearance Offers
+                Offers
               </MenuItem>
             </Paper>
           )}

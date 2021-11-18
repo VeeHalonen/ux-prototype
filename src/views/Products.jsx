@@ -1,10 +1,30 @@
-import { Typography, Card } from "@mui/material";
+import { Typography } from "@mui/material";
+import { useContext } from "react";
 import Category from "../components/Category";
 import ProductThumbnail from "../components/ProductThumbnail";
 import StyledLink from "../components/StyledLink";
-import { CATEGORIES } from "../helpers";
+import { CATEGORIES, GlobalStateContext } from "../helpers";
 
 const Products = () => {
+  const context = useContext(GlobalStateContext);
+  const products = context?.globalState?.products || [];
+  const discounts = products.filter((p) => p.discount).slice(0, 4); // first four discounted
+  const latest = products.filter((p) => p.latest).slice(0, 4); // first four latest
+
+  // const cardStyle = {
+  //   margin: 40,
+  //   marginTop: 0,
+  //   marginBottom: 60,
+  //   padding: 100,
+  //   paddingTop: 8,
+  //   paddingBottom: 8,
+  //   // width: "50%",
+  //   display: "inline-block",
+  //   marginLeft: "auto",
+  //   marginRight: "auto",
+  //   // backgroundColor: "#ededed",
+  // };
+  const headerStyle = { backgroundColor: "white", padding: 8 };
   return (
     <div style={{ textAlign: "center" }}>
       {/* PAGE TITLE */}
@@ -17,9 +37,9 @@ const Products = () => {
         Products
       </Typography>
       {/* CATEGORIES */}
-      <Typography paragraph variant="h5">
-        Categories
-      </Typography>
+      <div style={headerStyle}>
+        <StyledLink to={"/categories"} name="Categories" variant="h5" />
+      </div>
       <div
         style={{
           marginTop: 30,
@@ -30,35 +50,48 @@ const Products = () => {
           return <Category key={i} category={c} />;
         })}
       </div>
-      {/* CLEARANCE OFFERS */}
-      <Typography paragraph variant="h5">
-        Clearance Offers
-      </Typography>
+      {/* NEW */}
+      <div style={headerStyle}>
+        <StyledLink
+          to={"/search?latestOnly=true"}
+          name="New Items"
+          variant="h5"
+        />
+      </div>
       <div
         style={{
           marginTop: 30,
           marginBottom: 30,
         }}
       >
-        {[...Array(4)].map((e, i) => {
-          return <ProductThumbnail key={i} discount={true} />;
+        {latest.map((p, i) => {
+          return <ProductThumbnail key={i} product={p} />;
         })}
       </div>
-      <Card
+      {/* <Card style={cardStyle} color="primary">
+        <StyledLink
+          name="More New Items"
+          to="/search?latestOnly=true"
+          component="p"
+        />
+      </Card> */}
+      {/* OFFERS */}
+      <div style={headerStyle}>
+        <StyledLink to={"/clearance-items"} name="Offers" variant="h5" />
+      </div>
+      <div
         style={{
-          margin: 40,
-          marginTop: 0,
-          marginBottom: 40,
-          paddingTop: 8,
-          paddingBottom: 8,
-          width: "60%",
-          marginLeft: "auto",
-          marginRight: "auto",
+          marginTop: 30,
+          marginBottom: 30,
         }}
-        color="primary"
       >
+        {discounts.map((p, i) => {
+          return <ProductThumbnail key={i} discount={true} product={p} />;
+        })}
+      </div>
+      {/* <Card style={cardStyle} color="primary">
         <StyledLink name="More Offers" to="/clearance-items" component="p" />
-      </Card>
+      </Card> */}
     </div>
   );
 };
