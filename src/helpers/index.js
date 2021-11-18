@@ -128,7 +128,7 @@ export const getTotalPrice = (products) => {
 
 /* GLOBAL CONTEXT */
 
-const exampleProducts = getRandomProducts(17).concat(getExampleProducts());
+const exampleProducts = getRandomProducts(57).concat(getExampleProducts());
 
 export const initialState = {
   shoppingCart: [],
