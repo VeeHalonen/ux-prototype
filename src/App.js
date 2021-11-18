@@ -8,7 +8,7 @@ import Categories from "./views/Categories";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ThemeProvider } from "@mui/system";
 import TopMenu from "./components/TopMenu";
-import { TextField, Grid, CssBaseline, Card } from "@mui/material";
+import { Grid, CssBaseline, Card } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Products from "./views/Products";
 import Search from "./views/Search";
@@ -26,6 +26,7 @@ import {
   globalStateReducer,
   GlobalStateContext,
 } from "./helpers";
+import SearchField from "./components/SearchField";
 
 // Add routes:
 // 1. Add the page component in the "views" folder
@@ -37,9 +38,6 @@ import {
 function App() {
   const [globalState, dispatch] = useReducer(globalStateReducer, initialState);
 
-  const navigateTo = (path) => {
-    window.open(path, "_self");
-  };
   return (
     <div className="App">
       <GlobalStateContext.Provider value={{ globalState, dispatch }}>
@@ -81,17 +79,7 @@ function App() {
               <div>
                 <Grid container alignItems="center" spacing={1}>
                   <Grid item>
-                    <TextField
-                      placeholder="Search..."
-                      variant="outlined"
-                      size="small"
-                      style={{ backgroundColor: "white", borderRadius: "5px" }}
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter") {
-                          navigateTo("/search");
-                        }
-                      }}
-                    />
+                    <SearchField />
                   </Grid>
                   <Grid item>
                     <Link to="/search">
