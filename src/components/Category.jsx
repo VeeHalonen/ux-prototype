@@ -9,7 +9,7 @@ const Category = ({ category, wide }) => {
   return (
     <div style={{ width, margin: 10, display: "inline-block" }}>
       <Card style={{ padding }}>
-        <Link to="/search">
+        <Link to={"/search?category=" + category}>
           <img
             src="categoryImg.jpg"
             alt="Category Name"
@@ -17,7 +17,11 @@ const Category = ({ category, wide }) => {
             height={height}
           />
         </Link>
-        <StyledLink to="/search" name={category} component="p" />
+        <StyledLink
+          to={"/search?category=" + category}
+          name={category}
+          component="p"
+        />
       </Card>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Grid,
   TextField,
@@ -33,12 +33,23 @@ const DEFAULT_FILTERS = {
 };
 
 const SearchOptions = ({ applyFilter }) => {
+  // Read query parameters
+  const params = new URLSearchParams(window.location.search);
+  const initialCategory = params.get("category") || DEFAULT_FILTERS.category;
+
   const [textSearch, setTextSearch] = useState(DEFAULT_FILTERS.textSearch);
   const [priceRange, setPriceRange] = useState(DEFAULT_FILTERS.priceRange);
-  const [category, setCategory] = useState(DEFAULT_FILTERS.category);
+  const [category, setCategory] = useState(initialCategory);
   const [discountedOnly, setDiscountedOnly] = useState(
     DEFAULT_FILTERS.discountedOnly
   );
+
+  // Trigger filter on mount
+  useEffect(() => {
+    triggerFilter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handlePriceRangeChange = (event, newValue) => {
     setPriceRange(newValue);
   };
