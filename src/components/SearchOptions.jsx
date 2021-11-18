@@ -40,8 +40,9 @@ const SearchOptions = ({ applyFilter }) => {
   const initialLatestOnly = params.get("latestOnly")
     ? true
     : DEFAULT_FILTERS.latestOnly;
+  const initialText = params.get("text") || DEFAULT_FILTERS.textSearch;
 
-  const [textSearch, setTextSearch] = useState(DEFAULT_FILTERS.textSearch);
+  const [textSearch, setTextSearch] = useState(initialText);
   const [priceRange, setPriceRange] = useState(DEFAULT_FILTERS.priceRange);
   const [category, setCategory] = useState(initialCategory);
   const [discountedOnly, setDiscountedOnly] = useState(
