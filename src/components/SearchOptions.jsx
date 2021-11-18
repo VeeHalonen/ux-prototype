@@ -115,8 +115,8 @@ const SearchOptions = ({ applyFilter }) => {
     setTextSearch(DEFAULT_FILTERS.textSearch);
     setPriceRange(DEFAULT_FILTERS.priceRange);
     setCategory(DEFAULT_FILTERS.category);
-    setDiscountedOnly(DEFAULT_FILTERS.setDiscountedOnly);
-    setLatestOnly(DEFAULT_FILTERS.setLatestOnly);
+    setDiscountedOnly(DEFAULT_FILTERS.discountedOnly);
+    setLatestOnly(DEFAULT_FILTERS.latestOnly);
     // Send to parent
     applyFilter(DEFAULT_FILTERS);
   };
@@ -162,8 +162,7 @@ const SearchOptions = ({ applyFilter }) => {
             <FormControlLabel
               control={
                 <Checkbox
-                  defaultChecked={discountedOnly}
-                  value={discountedOnly}
+                  checked={discountedOnly}
                   onChange={(e) => setDiscountedOnly(e.target.checked)}
                 />
               }
@@ -175,8 +174,7 @@ const SearchOptions = ({ applyFilter }) => {
             <FormControlLabel
               control={
                 <Checkbox
-                  defaultChecked={latestOnly}
-                  value={latestOnly}
+                  checked={latestOnly}
                   onChange={(e) => setLatestOnly(e.target.checked)}
                 />
               }

@@ -2,6 +2,7 @@ import { Typography, Card, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 import { getProductPrice, getRandomProduct } from "../helpers";
 import AddToCartButton from "./AddToCartButton";
+import NewIndicator from "./NewIndicator";
 import StyledLink from "./StyledLink";
 
 // Optional prop: discount (boolean) - shows discount info
@@ -23,6 +24,7 @@ const ProductThumbnail = ({ discount, product }) => {
       }}
     >
       <Card style={{ padding, paddingBottom: 20 }}>
+        {product.latest && <NewIndicator />}
         <Link to="/product">
           <img
             id="logo"
