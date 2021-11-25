@@ -30,12 +30,14 @@ const NAMES = [
   "Whisper Pro",
 ];
 
+// Returns a random number between 1 and max (inclusive)
 const randomNumber = (max) => {
   return Math.floor(Math.random() * max) + 1;
 };
 
+// Returns a random integer between min and max (inclusive)
 const randomNumberBetween = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const randomFromArray = (arr) => {
@@ -56,14 +58,39 @@ const randomFromArrayMultiple = (arr) => {
   return randomValues;
 };
 
-// Returns a random number of reviews with a random rating
+// Returns a random number of reviews with a random rating (randomly weighted)
 const randomReviews = () => {
   const reviews = [];
   const reviewCount = randomNumberBetween(0, 30);
+  // Overall product quality (used for random review limits)
+  const quality = randomNumber(4);
+  let min = 1;
+  let max = 5;
+  switch (quality) {
+    // Poor
+    case 1:
+      min = 1;
+      max = 3;
+      break;
+    // Average
+    case 2:
+      min = 2;
+      max = 4;
+      break;
+    // Good
+    case 3:
+      min = 3;
+      max = 5;
+      break;
+    // Conflicting
+    default:
+      min = 1;
+      max = 5;
+  }
   while (reviews.length < reviewCount) {
     const randomReview = {
       reviewer: "User #" + randomNumber(10000),
-      rating: randomNumber(5),
+      rating: randomNumberBetween(min, max),
     };
     reviews.push(randomReview);
   }
