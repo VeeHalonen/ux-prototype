@@ -1,12 +1,19 @@
 import { Grid, Typography, Card } from "@mui/material";
+import { useContext } from "react";
 import ProductDetailsBox from "../components/ProductDetailsBox";
 import ProductInfo from "../components/ProductInfo";
 import ProductPagePhotos from "../components/ProductPagePhotos";
-import { getRandomProduct } from "../helpers";
+import {
+  getRandomProduct,
+  GlobalStateContext,
+  getLastProduct,
+} from "../helpers";
 
 const ProductPage = () => {
+  const context = useContext(GlobalStateContext);
   const product =
-    JSON.parse(localStorage.getItem("product")) || getRandomProduct(); // TODO: ?
+    getLastProduct(context?.globalState?.products) || getRandomProduct(); // TODO: ?
+  console.log("Product:", product);
   return (
     <Card style={{ padding: 50 }}>
       <Grid

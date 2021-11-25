@@ -173,11 +173,19 @@ const calculateItemCount = (items) => {
   return count;
 };
 
+// Returns last selected product from given list of products
+export const getLastProduct = (products) => {
+  const productName = localStorage.getItem("product");
+  if (!productName || !products) return null;
+
+  return products.find((p) => p.productName === productName);
+};
+
 // const context = useContext(GlobalStateContext);
 // context.globalState.products
 // context.globalState.shoppingCartItems
 // context.dispatch({ type: "addToCart", product });
-export const globalStateReducer = (state, { type, product, oldCount }) => {
+export const globalStateReducer = (state, { type, product, count }) => {
   switch (type) {
     case "addToCart":
       product.inCart++;
@@ -200,13 +208,37 @@ export const globalStateReducer = (state, { type, product, oldCount }) => {
           shoppingCart: [...state.shoppingCart, product],
         };
       }
+    // Adds multiple items to cart
+    case "addMultipleToCart":
+      product.inCart += count;
+      // Duplicate of an item already in cart?
+      const found2 = state.shoppingCart.find(
+        (p) => p.productName === product.productName
+      );
+      if (found2) {
+        return {
+          ...state,
+          shoppingCartItems: state.shoppingCartItems + count,
+          shoppingCart: [...state.shoppingCart],
+        };
+      }
+      // Not yet in cart? Add new item
+      else {
+        return {
+          ...state,
+          shoppingCartItems: state.shoppingCartItems + count,
+          shoppingCart: [...state.shoppingCart, product],
+        };
+      }
     case "removeFromCart":
       const afterRemoveCart = state.shoppingCart.filter(
         (p) => p.productName !== product.productName
       );
+      const countRemoved = product.inCart;
+      product.inCart = 0;
       return {
         ...state,
-        shoppingCartItems: state.shoppingCartItems - product.inCart,
+        shoppingCartItems: state.shoppingCartItems - countRemoved,
         shoppingCart: afterRemoveCart,
       };
     case "changeCount":

@@ -31,9 +31,7 @@ const ProductThumbnail = ({ discount, product }) => {
             src="productImgThumbnail.jpg"
             alt="Product Name"
             width={width - padding * 2}
-            onClick={() =>
-              localStorage.setItem("product", JSON.stringify(product))
-            }
+            onClick={() => localStorage.setItem("product", product.productName)}
           />
         </Link>
         <div style={{ minHeight: 150 }}>

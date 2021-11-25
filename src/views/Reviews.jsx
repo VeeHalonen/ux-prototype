@@ -1,11 +1,17 @@
 import { Typography, Card } from "@mui/material";
+import { useContext } from "react";
 import Review from "../components/Review";
 import StyledLink from "../components/StyledLink";
-import { getRandomProduct } from "../helpers";
+import {
+  getRandomProduct,
+  GlobalStateContext,
+  getLastProduct,
+} from "../helpers";
 
 const Reviews = () => {
+  const context = useContext(GlobalStateContext);
   const product =
-    JSON.parse(localStorage.getItem("product")) || getRandomProduct(); // TODO: ?
+    getLastProduct(context?.globalState?.products) || getRandomProduct(); // TODO: ?
   return (
     <Card style={{ padding: 50 }}>
       <Typography variant="h5" paragraph>

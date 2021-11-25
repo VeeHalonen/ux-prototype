@@ -1,10 +1,21 @@
 import { Typography, Rating, Grid, TextField } from "@mui/material";
+import { useState } from "react";
 import { getProductPrice } from "../helpers";
 import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
 const ProductInfo = ({ product }) => {
   const reviewCount = product.reviews.length;
+  const [count, setCount] = useState(1);
+
+  const onCountChange = (e) => {
+    var value = parseInt(e.target.value);
+    if (!value || value < 0) value = 0;
+    setCount(value);
+  };
+  const onAddToCart = () => {
+    setCount(1);
+  };
   const property = (title, value) => {
     return (
       <Typography variant="caption" paragraph>
@@ -76,12 +87,17 @@ const ProductInfo = ({ product }) => {
                 shrink: true,
               }}
               style={{ width: 50 }}
-              defaultValue={1}
               variant="standard"
+              value={count}
+              onChange={onCountChange}
             />
           </Grid>
           <Grid item>
-            <AddToCartButton product={product} />
+            <AddToCartButton
+              product={product}
+              count={count}
+              onAdd={onAddToCart}
+            />
           </Grid>
         </Grid>
       </Grid>
