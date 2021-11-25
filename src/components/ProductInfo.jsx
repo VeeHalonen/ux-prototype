@@ -4,6 +4,7 @@ import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
 const ProductInfo = ({ product }) => {
+  const reviewCount = 5;
   const property = (title, value) => {
     return (
       <Typography variant="caption" paragraph>
@@ -20,14 +21,21 @@ const ProductInfo = ({ product }) => {
           </Typography>
           <Rating value={product.rating} readOnly />
           <div style={{ marginLeft: 3, marginBottom: 30 }}>
-            <StyledLink
-              name="Read Reviews"
-              to="/reviews"
-              component="p"
-              paragraph
-              textAlign="start"
-              variant="body2"
-            />
+            {reviewCount > 0 && (
+              <StyledLink
+                name={reviewCount + " review" + (reviewCount > 1 ? "s" : "")}
+                to="/reviews"
+                component="p"
+                paragraph
+                textAlign="start"
+                variant="body2"
+              />
+            )}
+            {reviewCount === 0 && (
+              <Typography component="p" variant="caption" paragraph>
+                No reviews yet
+              </Typography>
+            )}
           </div>
           {property("Type", product.category + " fan")}
           {property("Coefficient of Performance", product.COP + ".0")}
