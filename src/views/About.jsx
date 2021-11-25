@@ -7,10 +7,11 @@ const About = () => {
         Company
       </Typography>
       <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque nam
-        consequatur totam qui minus nostrum iste, veritatis ipsum, illo
-        voluptatem dignissimos suscipit sint architecto quia assumenda, quae
-        neque necessitatibus officiis.
+        We are fans of fans. Fans are all we know, fans are all we love. Fans
+        only. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Doloremque nam consequatur totam qui minus nostrum iste, veritatis
+        ipsum, illo voluptatem dignissimos suscipit sint architecto quia
+        assumenda, quae neque necessitatibus officiis.
       </Typography>
       <Typography paragraph>
         Eius facere, earum quod quibusdam recusandae repellendus a et nostrum
@@ -22,11 +23,14 @@ const About = () => {
         Contact
       </Typography>
       <Typography>
-        Lorem ipsum dolor sit amet,
+        Jokutie 1
         <br />
-        consectetur, adipisicing elit.
+        00100 Tampere
         <br />
-        Hic dicta repudiandae vitae.
+        Finland
+        <br />
+        <br />
+        +358123456789
       </Typography>
     </Card>
   );
