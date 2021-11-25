@@ -4,18 +4,20 @@ const SimpleDataRow = ({ name, price, quantity, extraInfo }) => {
   const style = {};
   return (
     <Grid container item justifyContent="space-between">
-      <Grid item>
+      <Grid item xs={8}>
         <Typography gutterBottom style={{ fontWeight: "bold" }} variant="body2">
           {name}
         </Typography>
         {extraInfo && <Typography variant="body2">{extraInfo}</Typography>}
       </Grid>
-      <Grid item></Grid>
-      <Grid item>
-        <Typography variant="body2">{quantity || ""}</Typography>
+      <Grid item xs={2}>
+        <Typography variant="body2" align="right">
+          {quantity || ""}
+        </Typography>
       </Grid>
-      <Grid item>
-        <Typography variant="body2" style={style}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={1}>
+        <Typography variant="body2" style={style} align="right">
           €{price}
         </Typography>
       </Grid>

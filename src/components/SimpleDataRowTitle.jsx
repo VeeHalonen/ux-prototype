@@ -4,15 +4,19 @@ const SimpleDataRowTitle = () => {
   const style = { fontWeight: "bold" };
   return (
     <Grid container item justifyContent="space-between">
-      <Grid item>
+      <Grid item xs={8}>
         <Typography style={style}>Product</Typography>
       </Grid>
-      <Grid item></Grid>
-      <Grid item>
-        <Typography style={style}>Quantity</Typography>
+      <Grid item xs={2}>
+        <Typography style={style} align="right">
+          Quantity
+        </Typography>
       </Grid>
-      <Grid item>
-        <Typography style={style}>Price</Typography>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={1}>
+        <Typography style={style} align="right">
+          Price
+        </Typography>
       </Grid>
     </Grid>
   );
