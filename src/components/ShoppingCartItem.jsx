@@ -3,8 +3,15 @@ import { getProductPrice } from "../helpers";
 import StyledLink from "./StyledLink";
 
 const ShoppingCartItem = ({ product, context }) => {
+  const count = product.inCart;
   const removeFromCart = () => {
     context.dispatch({ type: "removeFromCart", product });
+  };
+  const onCountChange = (e) => {
+    var value = parseInt(e.target.value);
+    if (!value || value < 0) value = 0;
+    product.inCart = value;
+    context.dispatch({ type: "changeCount", product });
   };
   return (
     <div>
@@ -49,11 +56,10 @@ const ShoppingCartItem = ({ product, context }) => {
           alignItems="end"
           direction="column"
         >
-          <Typography
-            textAlign="end"
-            style={{ fontWeight: "bold", marginRight: 10 }}
-          >
-            €{getProductPrice(product)}
+          <Typography textAlign="end" style={{ marginRight: 10 }}>
+            <b>€{getProductPrice(product) * count}</b>
+            <br />
+            {count > 1 && "(€" + getProductPrice(product) + " x " + count + ")"}
           </Typography>
           <TextField
             label="Quantity"
@@ -63,7 +69,8 @@ const ShoppingCartItem = ({ product, context }) => {
               shrink: true,
             }}
             style={{ width: 50 }}
-            defaultValue={1}
+            value={count}
+            onChange={onCountChange}
             variant="standard"
           />
           <Button

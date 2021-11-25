@@ -103,6 +103,7 @@ export const getRandomProduct = () => {
     powerConsumption: randomFromArray(POWER_CONSUMPTION),
     soundLevel: randomFromArray(SOUND_LEVEL),
     reviews,
+    inCart: 0,
   };
 };
 
@@ -149,7 +150,7 @@ export const getProductPrice = (product) => {
 export const getTotalPrice = (products) => {
   let totalPrice = 0;
   products.forEach((p) => {
-    totalPrice += getProductPrice(p);
+    totalPrice += getProductPrice(p) * p.inCart;
   });
   return totalPrice;
 };
@@ -164,28 +165,57 @@ export const initialState = {
   products: exampleProducts,
 };
 
+const calculateItemCount = (items) => {
+  let count = 0;
+  items.forEach((i) => {
+    count += parseInt(i.inCart);
+  });
+  return count;
+};
+
 // const context = useContext(GlobalStateContext);
 // context.globalState.products
 // context.globalState.shoppingCartItems
 // context.dispatch({ type: "addToCart", product });
-export const globalStateReducer = (state, { type, product }) => {
+export const globalStateReducer = (state, { type, product, oldCount }) => {
   switch (type) {
     case "addToCart":
-      return {
-        ...state,
-        shoppingCartItems: state.shoppingCartItems + 1,
-        shoppingCart: [...state.shoppingCart, product],
-      };
+      product.inCart++;
+      // Duplicate of an item already in cart?
+      const found = state.shoppingCart.find(
+        (p) => p.productName === product.productName
+      );
+      if (found) {
+        return {
+          ...state,
+          shoppingCartItems: state.shoppingCartItems + 1,
+          shoppingCart: [...state.shoppingCart],
+        };
+      }
+      // Not yet in cart? Add new item
+      else {
+        return {
+          ...state,
+          shoppingCartItems: state.shoppingCartItems + 1,
+          shoppingCart: [...state.shoppingCart, product],
+        };
+      }
     case "removeFromCart":
       const afterRemoveCart = state.shoppingCart.filter(
         (p) => p.productName !== product.productName
       );
       return {
         ...state,
-        shoppingCartItems: afterRemoveCart.length,
+        shoppingCartItems: state.shoppingCartItems - product.inCart,
         shoppingCart: afterRemoveCart,
       };
+    case "changeCount":
+      return {
+        ...state,
+        shoppingCartItems: calculateItemCount(state.shoppingCart),
+      };
     case "emptyCart":
+      state.shoppingCart.forEach((p) => (p.inCart = 0));
       return { ...state, shoppingCartItems: 0, shoppingCart: [] };
     default:
       return state;
