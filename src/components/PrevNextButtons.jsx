@@ -1,7 +1,14 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const PrevNextButtons = ({ nextLink, prevLink, nextTitle, prevTitle }) => {
+const PrevNextButtons = ({
+  nextLink,
+  prevLink,
+  nextTitle,
+  prevTitle,
+  disablePrev,
+  disableNext,
+}) => {
   const minWidth = 100;
   return (
     <div style={{ textAlign: "end", marginTop: 100, marginBottom: 10 }}>
@@ -13,6 +20,7 @@ const PrevNextButtons = ({ nextLink, prevLink, nextTitle, prevTitle }) => {
           variant="contained"
           color="secondary"
           style={{ marginRight: 10, minWidth }}
+          disabled={disablePrev}
         >
           {prevTitle || "Back"}
         </Button>
@@ -24,6 +32,7 @@ const PrevNextButtons = ({ nextLink, prevLink, nextTitle, prevTitle }) => {
           to={nextLink}
           variant="contained"
           style={{ minWidth }}
+          disabled={disableNext}
         >
           {nextTitle || "Next"}
         </Button>
