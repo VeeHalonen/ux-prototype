@@ -66,7 +66,7 @@ const SearchOptions = ({ applyFilter }) => {
       </Typography>
     );
   };
-  const rangeSlider = (value, min, max, onChange) => {
+  const rangeSlider = (value, min, max, stepSize, onChange) => {
     return (
       <Slider
         style={{ marginLeft: "10px", width: "90%" }}
@@ -75,6 +75,7 @@ const SearchOptions = ({ applyFilter }) => {
         valueLabelDisplay="off"
         min={min}
         max={max}
+        step={stepSize}
       />
     );
   };
@@ -152,7 +153,7 @@ const SearchOptions = ({ applyFilter }) => {
           <Typography>
             <b>Price: </b> {priceRange[0] + "-" + priceRange[1]} €
           </Typography>
-          {rangeSlider(priceRange, 0, MAX_PRICE, handlePriceRangeChange)}
+          {rangeSlider(priceRange, 0, MAX_PRICE, 5, handlePriceRangeChange)}
           {/* TODO: */}
           {/* <Typography>Range 2</Typography>
           <Slider defaultValue={50} valueLabelDisplay="auto" /> */}
