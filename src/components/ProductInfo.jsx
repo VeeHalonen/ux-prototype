@@ -4,7 +4,7 @@ import AddToCartButton from "./AddToCartButton";
 import StyledLink from "./StyledLink";
 
 const ProductInfo = ({ product }) => {
-  const reviewCount = 5;
+  const reviewCount = product.reviews.length;
   const property = (title, value) => {
     return (
       <Typography variant="caption" paragraph>

@@ -56,13 +56,37 @@ const randomFromArrayMultiple = (arr) => {
   return randomValues;
 };
 
+// Returns a random number of reviews with a random rating
+const randomReviews = () => {
+  const reviews = [];
+  const reviewCount = randomNumber(0, 30);
+  while (reviews.length < reviewCount) {
+    const randomReview = { rating: randomNumber(5) };
+    reviews.push(randomReview);
+  }
+  return reviews;
+};
+
+// Calculates product rating based on reviews
+const calculateRating = (reviews) => {
+  let count = reviews.length;
+  if (count === 0) return 0;
+  let total = 0;
+  reviews.forEach((r) => {
+    total += r.rating;
+  });
+  return total / count;
+};
+
 export const getRandomProduct = () => {
   const productName = randomFromArray(NAMES) + " #" + randomNumber(10000);
   const price = randomNumberBetween(10, MAX_PRICE);
+  const reviews = randomReviews();
+  const rating = calculateRating(reviews);
   return {
     productName,
-    rating: randomNumber(5),
-    price: price,
+    rating,
+    price,
     discount: Math.random() >= 0.7 ? true : false,
     latest: Math.random() >= 0.7 ? true : false,
     category: randomFromArray(CATEGORIES),
@@ -75,6 +99,7 @@ export const getRandomProduct = () => {
     speedSettings: randomNumber(5),
     powerConsumption: randomFromArray(POWER_CONSUMPTION),
     soundLevel: randomFromArray(SOUND_LEVEL),
+    reviews,
   };
 };
 
