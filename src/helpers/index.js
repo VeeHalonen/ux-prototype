@@ -59,9 +59,12 @@ const randomFromArrayMultiple = (arr) => {
 // Returns a random number of reviews with a random rating
 const randomReviews = () => {
   const reviews = [];
-  const reviewCount = randomNumber(0, 30);
+  const reviewCount = randomNumberBetween(0, 30);
   while (reviews.length < reviewCount) {
-    const randomReview = { rating: randomNumber(5) };
+    const randomReview = {
+      reviewer: "User #" + randomNumber(10000),
+      rating: randomNumber(5),
+    };
     reviews.push(randomReview);
   }
   return reviews;

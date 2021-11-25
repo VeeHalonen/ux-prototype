@@ -1,16 +1,19 @@
 import { Typography, Card } from "@mui/material";
 import Review from "../components/Review";
 import StyledLink from "../components/StyledLink";
+import { getRandomProduct } from "../helpers";
 
 const Reviews = () => {
+  const product =
+    JSON.parse(localStorage.getItem("product")) || getRandomProduct(); // TODO: ?
   return (
     <Card style={{ padding: 50 }}>
       <Typography variant="h5" paragraph>
         Customer reviews for{" "}
-        <StyledLink name="Product Name" to="/product" component="span" />
+        <StyledLink name={product.productName} to="/product" component="span" />
       </Typography>
-      {[...Array(5)].map((e, i) => {
-        return <Review key={i} />;
+      {product.reviews.map((r, i) => {
+        return <Review key={i} review={r} />;
       })}
     </Card>
   );

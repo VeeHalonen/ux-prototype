@@ -1,6 +1,6 @@
 import { Typography, Grid, Rating } from "@mui/material";
 
-const Review = () => {
+const Review = ({ review }) => {
   return (
     <>
       <hr style={{ marginTop: 30, marginBottom: 30 }} />
@@ -8,11 +8,11 @@ const Review = () => {
         <Grid item xs={4}>
           <Typography gutterBottom>
             <Typography style={{ fontWeight: "bold" }} component="span">
-              User name
+              {review.reviewer}
             </Typography>
             <Typography component="span"> on Jan 1 2021</Typography>
           </Typography>
-          <Rating value={3} readOnly />
+          <Rating value={review.rating} readOnly />
         </Grid>
         <Grid item xs={8}>
           <Typography paragraph style={{ fontWeight: "bold" }}>
