@@ -30,8 +30,19 @@ const ProductInfo = ({ product }) => {
           <Typography variant="h5" gutterBottom style={{ marginTop: 10 }}>
             {product.productName}
           </Typography>
-          <Rating value={product.rating} readOnly />
-          <div style={{ marginLeft: 3, marginBottom: 30 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Rating value={product.rating} readOnly />
+            <Typography component="span" style={{ marginLeft: 5 }}>
+              {"(" + product.rating.toFixed(1) + ")"}
+            </Typography>
+          </div>
+          <div style={{ marginTop: 5, marginLeft: 3, marginBottom: 30 }}>
             {reviewCount > 0 && (
               <StyledLink
                 name={reviewCount + " review" + (reviewCount > 1 ? "s" : "")}
