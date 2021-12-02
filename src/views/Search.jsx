@@ -1,12 +1,21 @@
-import { Grid, Button, Typography } from "@mui/material";
+import {
+  Grid,
+  Button,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import { useState, useContext } from "react";
 import ProductThumbnail from "../components/ProductThumbnail";
 import SearchOptions from "../components/SearchOptions";
 import StyledLink from "../components/StyledLink";
-import { GlobalStateContext } from "../helpers";
+import { getProductPrice, GlobalStateContext } from "../helpers";
 
 const Search = () => {
   const [filters, setFilters] = useState(null);
+  const [sortBy, setSortBy] = useState("Relevance");
   const context = useContext(GlobalStateContext);
   const products = context?.globalState?.products || [];
 
@@ -52,6 +61,44 @@ const Search = () => {
   const productsAfterFilters = () => {
     return products.filter((p) => passesFilters(p));
   };
+  const productsAfterFiltersAndSorting = () => {
+    /* Assign sorting function */
+    let sortFunction = () => true;
+
+    // (Relevance is a lie)
+    // Alphabetical by name
+    if (sortBy === "A-Z") {
+      sortFunction = (a, b) => {
+        if (a.productName < b.productName) {
+          return -1;
+        }
+        if (a.productName > b.productName) {
+          return 1;
+        }
+        return 0;
+      };
+    }
+    // Prize (ascending)
+    else if (sortBy === "Cheapest") {
+      sortFunction = (a, b) => {
+        return getProductPrice(a) - getProductPrice(b);
+      };
+    }
+    // Price (descending)
+    else if (sortBy === "Most Expensive") {
+      sortFunction = (a, b) => {
+        return getProductPrice(b) - getProductPrice(a);
+      };
+    }
+    // Rating (descending)
+    else if (sortBy === "Rating") {
+      sortFunction = (a, b) => {
+        return b.rating - a.rating;
+      };
+    }
+    /* Return sort result */
+    return productsAfterFilters().sort(sortFunction);
+  };
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} style={{ marginBottom: 10 }}>
@@ -66,11 +113,35 @@ const Search = () => {
         <SearchOptions applyFilter={setFilters} />
       </Grid>
       <Grid item xs={9} textAlign="center">
-        <Typography variant="h5" paragraph textAlign="start">
-          {productsAfterFilters().length} Results
-        </Typography>
+        <Grid item container xs={12} justifyContent="space-between">
+          <Grid item>
+            <Typography variant="h5" paragraph textAlign="start">
+              {productsAfterFiltersAndSorting().length} Results
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <FormControl size="small">
+              <InputLabel>Sort By</InputLabel>
+              <Select
+                style={{ minWidth: 150 }}
+                value={sortBy}
+                label="Sort By"
+                fullWidth
+                onChange={(e) => {
+                  setSortBy(e.target.value);
+                }}
+              >
+                <MenuItem value="Relevance">Relevance</MenuItem>
+                <MenuItem value="A-Z">A-Z</MenuItem>
+                <MenuItem value="Cheapest">Cheapest</MenuItem>
+                <MenuItem value="Most Expensive">Most Expensive</MenuItem>
+                <MenuItem value="Rating">Best Rated</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
         <div style={{ textAlign: "center" }}>
-          {productsAfterFilters().map((p, i) => {
+          {productsAfterFiltersAndSorting().map((p, i) => {
             return <ProductThumbnail key={i} product={p} />;
           })}
           <div style={{ marginTop: 20 }}>
