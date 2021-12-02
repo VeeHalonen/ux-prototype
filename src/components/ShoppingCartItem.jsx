@@ -9,7 +9,7 @@ const ShoppingCartItem = ({ product, context }) => {
   };
   const onCountChange = (e) => {
     var value = parseInt(e.target.value);
-    if (!value || value < 0) value = 0;
+    if (!value || value < 1) value = 1;
     product.inCart = value;
     context.dispatch({ type: "changeCount", product });
   };
@@ -64,7 +64,7 @@ const ShoppingCartItem = ({ product, context }) => {
           <TextField
             label="Quantity"
             type="number"
-            inputProps={{ min: 0, style: { textAlign: "center" } }}
+            inputProps={{ min: 1, style: { textAlign: "center" } }}
             InputLabelProps={{
               shrink: true,
             }}
