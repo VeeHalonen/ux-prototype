@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 import { useState, useContext } from "react";
 import { GlobalStateContext } from "../helpers";
 import Toast from "./Toast";
@@ -21,9 +21,11 @@ const AddToCartButton = ({ product, count, onAdd }) => {
   return (
     <>
       <Toast message="Added to cart!" open={toast} onClose={hideToast} />
-      <Button variant="contained" onClick={addToCart}>
-        Add to Cart
-      </Button>
+      <Badge badgeContent={product.inCart} color="error">
+        <Button variant="contained" onClick={addToCart}>
+          Add to Cart
+        </Button>
+      </Badge>
     </>
   );
 };
