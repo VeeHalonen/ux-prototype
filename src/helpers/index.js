@@ -2,7 +2,13 @@ import { createContext } from "react";
 
 export const MAX_PRICE = 500;
 
-export const CATEGORIES = ["Table", "Floor", "Wall-mounted", "Ceiling"];
+export const CATEGORIES = [
+  "Table",
+  "Floor",
+  "Wall-mounted",
+  "Ceiling",
+  "Computer",
+];
 export const MATERIALS = ["Plastic", "Aluminum", "Steel"];
 export const COLORS = ["White", "Black", "Gray"];
 export const FEATURES = [
@@ -178,6 +184,12 @@ export const getTotalPrice = (products) => {
     totalPrice += getProductPrice(p) * p.inCart;
   });
   return totalPrice;
+};
+
+// Get product URL based on category
+export const getProductPicSrc = (product) => {
+  if (!product) return "productImgThumbnail.jpg";
+  return "fan-" + product.category + ".jpg";
 };
 
 /* GLOBAL CONTEXT */

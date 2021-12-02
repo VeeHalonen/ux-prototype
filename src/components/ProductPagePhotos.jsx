@@ -1,12 +1,13 @@
 import { MobileStepper } from "@mui/material";
+import { getProductPicSrc } from "../helpers";
 
-const ProductPagePhotos = () => {
+const ProductPagePhotos = ({ product }) => {
   const imgWidth = 300;
   const imgHeight = 300;
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <img
-        src="productImg1.jpg"
+        src={getProductPicSrc(product)}
         alt="Product Pic 1"
         style={{
           maxWidth: imgWidth,

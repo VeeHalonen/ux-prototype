@@ -1,6 +1,10 @@
 import { Typography, Card, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getProductPrice, getRandomProduct } from "../helpers";
+import {
+  getProductPicSrc,
+  getProductPrice,
+  getRandomProduct,
+} from "../helpers";
 import AddToCartButton from "./AddToCartButton";
 import NewIndicator from "./NewIndicator";
 import StyledLink from "./StyledLink";
@@ -28,9 +32,10 @@ const ProductThumbnail = ({ discount, product }) => {
         <Link to="/product">
           <img
             id="logo"
-            src="productImgThumbnail.jpg"
-            alt="Product Name"
+            src={getProductPicSrc(product)}
+            alt={product.category}
             width={width - padding * 2}
+            style={{ objectFit: "cover", height: "150px" }}
             onClick={() => localStorage.setItem("product", product.productName)}
           />
         </Link>

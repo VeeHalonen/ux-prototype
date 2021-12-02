@@ -1,5 +1,5 @@
 import { Typography, Grid, Button, TextField } from "@mui/material";
-import { getProductPrice } from "../helpers";
+import { getProductPicSrc, getProductPrice } from "../helpers";
 import StyledLink from "./StyledLink";
 
 const ShoppingCartItem = ({ product, context }) => {
@@ -22,9 +22,10 @@ const ShoppingCartItem = ({ product, context }) => {
             <div style={{ display: "inline-block", marginRight: 30 }}>
               <img
                 id="logo"
-                src="productImgThumbnail.jpg"
+                src={getProductPicSrc(product)}
                 alt="Product Name"
                 width={140}
+                style={{ objectFit: "cover", height: "140px" }}
               />
             </div>
             <Grid item xs={9}>

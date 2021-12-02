@@ -23,7 +23,7 @@ const ProductPage = () => {
         justifyContent="start"
       >
         <Grid item>
-          <ProductPagePhotos />
+          <ProductPagePhotos product={product} />
         </Grid>
         <Grid item container xs={12} md={7} lg={8}>
           <ProductInfo product={product} />
