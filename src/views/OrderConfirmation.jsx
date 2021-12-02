@@ -1,11 +1,22 @@
 import { Typography, Grid, Card } from "@mui/material";
+import { useContext } from "react";
 import PrevNextButtons from "../components/PrevNextButtons";
 import ShoppingCartStepper from "../components/ShoppingCartStepper";
 import SimpleDataRow from "../components/SimpleDataRow";
 import SimpleDataRowTitle from "../components/SimpleDataRowTitle";
 import TotalSum from "../components/TotalSum";
+import {
+  getRandomProducts,
+  getProductPrice,
+  getTotalPrice,
+  GlobalStateContext,
+} from "../helpers";
 
 const OrderConfirmation = () => {
+  const context = useContext(GlobalStateContext);
+  const products = context?.globalState?.shoppingCart || getRandomProducts(2);
+  const shippingCost = 100;
+  const shippingMethod = "Snail Mail";
   const spacing = 50;
   return (
     <div>
@@ -16,21 +27,23 @@ const OrderConfirmation = () => {
         </Typography>
         <Grid container spacing={3}>
           <SimpleDataRowTitle />
+          {products.map((product, i) => {
+            return (
+              <SimpleDataRow
+                name={product.productName}
+                price={getProductPrice(product)}
+                quantity={product.inCart}
+                key={i}
+              />
+            );
+          })}
           <SimpleDataRow
-            name="Product Name"
-            price={50}
-            quantity={1}
-            extraInfo="Some Info"
+            name="Shipping"
+            price={shippingCost}
+            extraInfo={shippingMethod}
           />
-          <SimpleDataRow
-            name="Product Name"
-            price={50}
-            quantity={1}
-            extraInfo="Some Info"
-          />
-          <SimpleDataRow name="Shipping" price={100} extraInfo="Snail Mail" />
         </Grid>
-        <TotalSum sum={200} />
+        <TotalSum sum={getTotalPrice(products) + shippingCost} />
         <Typography
           paragraph
           style={{ fontWeight: "bold", marginTop: spacing }}

@@ -29,7 +29,7 @@ const OrderSummary = () => {
               <SimpleDataRow
                 name={product.productName}
                 price={getProductPrice(product)}
-                quantity={1}
+                quantity={product.inCart}
                 key={i}
               />
             );
