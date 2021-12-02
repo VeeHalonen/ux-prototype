@@ -112,7 +112,7 @@ const Search = () => {
       <Grid item xs={3}>
         <SearchOptions applyFilter={setFilters} />
       </Grid>
-      <Grid item xs={9} textAlign="center">
+      <Grid item container xs={9} textAlign="center">
         <Grid item container xs={12} justifyContent="space-between">
           <Grid item>
             <Typography variant="h5" paragraph textAlign="start">
@@ -144,7 +144,7 @@ const Search = () => {
             </FormControl>
           </Grid>
         </Grid>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", marginTop: 10 }}>
           {productsAfterFiltersAndSorting().map((p, i) => {
             return <ProductThumbnail key={i} product={p} />;
           })}
