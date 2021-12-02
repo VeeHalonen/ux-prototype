@@ -10,7 +10,7 @@ const ProductInfo = ({ product }) => {
 
   const onCountChange = (e) => {
     var value = parseInt(e.target.value);
-    if (!value || value < 0) value = 0;
+    if (!value || value < 1) value = 1;
     setCount(value);
   };
   const onAddToCart = () => {
