@@ -8,6 +8,7 @@ const PrevNextButtons = ({
   prevTitle,
   disablePrev,
   disableNext,
+  actionOnNext, // Optional extra functionality for next button
 }) => {
   const minWidth = 100;
   return (
@@ -33,6 +34,7 @@ const PrevNextButtons = ({
           variant="contained"
           style={{ minWidth }}
           disabled={disableNext}
+          onClick={actionOnNext}
         >
           {nextTitle || "Next"}
         </Button>

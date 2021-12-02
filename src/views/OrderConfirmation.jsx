@@ -15,8 +15,18 @@ import {
 const OrderConfirmation = () => {
   const context = useContext(GlobalStateContext);
   const products = context?.globalState?.shoppingCart || getRandomProducts(2);
-  const shippingCost = 100;
-  const shippingMethod = "Snail Mail";
+  const shippingCost = parseInt(localStorage.getItem("shippingCost")) || 100;
+  let shippingMethod = "";
+  switch (shippingCost) {
+    case 500:
+      shippingMethod = "Carrier Pigeon";
+      break;
+    case 2000:
+      shippingMethod = "African Swallow";
+      break;
+    default:
+      shippingMethod = "Snail Mail";
+  }
   const spacing = 50;
   return (
     <div>

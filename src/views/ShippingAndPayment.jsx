@@ -46,6 +46,10 @@ const ShippingAndPayment = () => {
       </Grid>
     );
   };
+  // Saves shipping information to localStorage
+  const saveShippingInfo = () => {
+    localStorage.setItem("shippingCost", shipping);
+  };
   return (
     <div>
       <ShoppingCartStepper step={2} />
@@ -106,6 +110,7 @@ const ShippingAndPayment = () => {
         <PrevNextButtons
           prevLink="/order-summary"
           nextLink="/order-confirmation"
+          actionOnNext={saveShippingInfo}
         />
       </Card>
     </div>
