@@ -189,7 +189,7 @@ export const getTotalPrice = (products) => {
 // Get product URL based on category
 export const getProductPicSrc = (product) => {
   if (!product) return "productImgThumbnail.jpg";
-  return "fan-" + product.category + ".jpg";
+  return "fan-" + product.category.toLowerCase() + ".jpg";
 };
 
 /* GLOBAL CONTEXT */
