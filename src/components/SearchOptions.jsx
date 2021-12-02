@@ -44,6 +44,9 @@ const SearchOptions = ({ applyFilter }) => {
 
   const [textSearch, setTextSearch] = useState(initialText);
   const [priceRange, setPriceRange] = useState(DEFAULT_FILTERS.priceRange);
+  const [acceptedPriceRange, setAcceptedPriceRange] = useState(
+    DEFAULT_FILTERS.priceRange
+  );
   const [category, setCategory] = useState(initialCategory);
   const [discountedOnly, setDiscountedOnly] = useState(
     DEFAULT_FILTERS.discountedOnly
@@ -55,6 +58,12 @@ const SearchOptions = ({ applyFilter }) => {
     triggerFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Watch for state changes to trigger filter automatically
+  useEffect(() => {
+    triggerFilter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, discountedOnly, latestOnly]);
 
   const handlePriceRangeChange = (event, newValue) => {
     setPriceRange(newValue);
@@ -110,12 +119,14 @@ const SearchOptions = ({ applyFilter }) => {
     };
   };
   const triggerFilter = () => {
+    setAcceptedPriceRange(priceRange);
     applyFilter(getFilters());
   };
   const resetFilters = () => {
     // Set values
     setTextSearch(DEFAULT_FILTERS.textSearch);
     setPriceRange(DEFAULT_FILTERS.priceRange);
+    setAcceptedPriceRange(DEFAULT_FILTERS.priceRange);
     setCategory(DEFAULT_FILTERS.category);
     setDiscountedOnly(DEFAULT_FILTERS.discountedOnly);
     setLatestOnly(DEFAULT_FILTERS.latestOnly);
@@ -153,10 +164,23 @@ const SearchOptions = ({ applyFilter }) => {
           <Typography>
             <b>Price: </b> {priceRange[0] + "-" + priceRange[1]} €
           </Typography>
-          {rangeSlider(priceRange, 0, MAX_PRICE, 5, handlePriceRangeChange)}
+          {rangeSlider(priceRange, 0, MAX_PRICE, 10, handlePriceRangeChange)}
           {/* TODO: */}
           {/* <Typography>Range 2</Typography>
           <Slider defaultValue={50} valueLabelDisplay="auto" /> */}
+          <div style={{ margin: 8, marginLeft: 20, marginRight: 20 }}>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={() => {
+                triggerFilter();
+              }}
+              fullWidth
+              disabled={priceRange === acceptedPriceRange}
+            >
+              Set Range
+            </Button>
+          </div>
         </Grid>
         {/* Discounted Only */}
         <Grid item>
@@ -184,12 +208,7 @@ const SearchOptions = ({ applyFilter }) => {
             />
           </FormGroup>
         </Grid>
-        {/* Buttons */}
-        <Grid item>
-          <Button variant="contained" fullWidth onClick={triggerFilter}>
-            Search
-          </Button>
-        </Grid>
+        {/* Reset Button */}
         <Grid item>
           <Button variant="outlined" fullWidth onClick={resetFilters}>
             Reset Filters
