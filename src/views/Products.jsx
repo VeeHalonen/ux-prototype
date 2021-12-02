@@ -8,8 +8,14 @@ import { CATEGORIES, GlobalStateContext } from "../helpers";
 const Products = () => {
   const context = useContext(GlobalStateContext);
   const products = context?.globalState?.products || [];
-  const discounts = products.filter((p) => p.discount).slice(0, 5); // first five discounted
-  const latest = products.filter((p) => p.latest).slice(0, 5); // first five latest
+
+  // Figure out how many items to show based on screen size (for demo purposes, not reactive)
+  let itemsToShow = 5;
+  if (window.innerWidth < 825) itemsToShow = 4;
+  else if (window.innerWidth < 1045) itemsToShow = 3;
+  else if (window.innerWidth < 1270) itemsToShow = 4;
+  const discounts = products.filter((p) => p.discount).slice(0, itemsToShow); // first discounted
+  const latest = products.filter((p) => p.latest).slice(0, itemsToShow); // first latest
 
   // const cardStyle = {
   //   margin: 40,
