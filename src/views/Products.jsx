@@ -8,8 +8,8 @@ import { CATEGORIES, GlobalStateContext } from "../helpers";
 const Products = () => {
   const context = useContext(GlobalStateContext);
   const products = context?.globalState?.products || [];
-  const discounts = products.filter((p) => p.discount).slice(0, 4); // first four discounted
-  const latest = products.filter((p) => p.latest).slice(0, 4); // first four latest
+  const discounts = products.filter((p) => p.discount).slice(0, 5); // first five discounted
+  const latest = products.filter((p) => p.latest).slice(0, 5); // first five latest
 
   // const cardStyle = {
   //   margin: 40,
