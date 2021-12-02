@@ -41,7 +41,12 @@ const ProductThumbnail = ({ discount, product }) => {
             component="p"
             product={product}
           />
-          <Rating value={product.rating} size="small" readOnly />
+          <Rating
+            value={product.rating}
+            size="small"
+            readOnly
+            precision={0.1}
+          />
           <Typography variant="body2" textAlign="center" paragraph>
             {product.shortInfo}
           </Typography>

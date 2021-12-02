@@ -37,7 +37,7 @@ const ProductInfo = ({ product }) => {
               flexWrap: "wrap",
             }}
           >
-            <Rating value={product.rating} readOnly />
+            <Rating value={product.rating} readOnly precision={0.1} />
             <Typography component="span" style={{ marginLeft: 5 }}>
               {"(" + product.rating.toFixed(1) + ")"}
             </Typography>
