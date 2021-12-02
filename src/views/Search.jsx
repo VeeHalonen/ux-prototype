@@ -116,7 +116,11 @@ const Search = () => {
         <Grid item container xs={12} justifyContent="space-between">
           <Grid item>
             <Typography variant="h5" paragraph textAlign="start">
-              {productsAfterFiltersAndSorting().length} Results
+              {filters?.category && filters.category !== "ALL"
+                ? filters.category
+                : "All"}{" "}
+              Fans {" ("}
+              {productsAfterFiltersAndSorting().length} Results)
             </Typography>
           </Grid>
           <Grid item xs={3}>
