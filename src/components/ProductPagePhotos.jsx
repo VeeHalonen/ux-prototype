@@ -47,7 +47,10 @@ const ProductPagePhotos = ({ product }) => {
         <ArrowForwardIosIcon />
       </Backdrop>
       {/* Image & Stepper (placeholder) */}
-      <div style={{ textAlign: "center" }} onClick={openCarousel}>
+      <div
+        style={{ textAlign: "center", cursor: "pointer" }}
+        onClick={openCarousel}
+      >
         <img
           src={getProductPicSrc(product)}
           alt="Product Pic 1"
