@@ -2,7 +2,7 @@ import { MobileStepper, Typography } from "@mui/material";
 import { useState } from "react";
 import { getProductPicSrc } from "../helpers";
 import Backdrop from "@mui/material/Backdrop";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const ProductPagePhotos = ({ product }) => {
